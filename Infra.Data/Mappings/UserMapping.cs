@@ -59,26 +59,6 @@ namespace Infra.Data.Mappings
             builder.Property(u => u.UpdatedAt)
                 .HasColumnType("datetime(0)")
                 .IsRequired(false);
-
-            builder.Property(u => u.TotvsUserId)
-                .IsRequired();
-
-            builder.HasMany(u => u.MachineSchedules)
-               .WithOne(m => m.User)
-               .IsRequired(false);
-
-            builder.HasMany(u => u.Plants)
-               .WithOne(p => p.User)
-               .IsRequired(false);
-
-            builder.HasMany(u => u.EggCategories)
-               .WithOne(e => e.User)
-               .IsRequired(false);
-
-            builder.HasOne(u => u.Asset)
-               .WithMany(a => a.Users)
-               .HasForeignKey(u => u.AssetId)
-               .IsRequired(false);
         }
     }
 }

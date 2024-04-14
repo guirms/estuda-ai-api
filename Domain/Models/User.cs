@@ -16,17 +16,6 @@ namespace Domain.Models
         public DateTime? LastPasswordRecovery { get; set; }
         public string? RecoveryCode { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public int TotvsUserId { get; set; }
-        public int? AssetId { get; set; }
-
-        #region Relationships
-
-        public virtual ICollection<MachineSchedule>? MachineSchedules { get; set; }
-        public virtual ICollection<Plant>? Plants { get; set; }
-        public virtual ICollection<EggCategory>? EggCategories { get; set; }
-        public virtual Asset? Asset { get; set; }
-
-        #endregion
     }
 }
 

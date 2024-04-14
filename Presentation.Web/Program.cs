@@ -10,7 +10,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Presentation.Web.Filters;
 using Presentation.Web.NativeInjector;
-using System.Data;
 using System.Text;
 using System.Threading.RateLimiting;
 
@@ -19,9 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 #region Routes
-
-//if (builder.Environment.IsProduction())
-//    builder.WebHost.UseUrls("https://*:5000");
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -92,25 +88,15 @@ builder.Services.AddAutoMapper(typeof(Application.AutoMapper.AutoMapper));
 var encryptionService = new EncryptionService();
 
 var plassonFarmKey = $"{Pwd.Pf.ToSafeValue()}_authSalt";
-var serverVersion = encryptionService.DecryptDynamic(builder.Configuration.GetTag("ServerVersion").ToSafeValue(), plassonFarmKey);
-
-
-#region Teste
-
-var mysqlconnection = encryptionService.DecryptDynamic("FeIkrsfUty7gcqaoaIlfHOZVyvl7A6wnH8uxA1I0+uVsUnP38PUuCfah3PyUmXqFsYadX9/i6SpoENlumyeLzLMWC6gstIoQPX8XlLbJaEawd6bBxi/D/+5ITaQXiYi1q5oGUB4h7MiTkpm9glEBXe2B9InqyLQNmgYqnkpAgPCL52tY20oM5UK6DK+WHzPSFffdWZlfiKH0WUllGueVkw==", plassonFarmKey);
-Console.Write("");
-
-#endregion
 
 #endregion
 
 #region Mysql Connection
 
 var mysqlConnection = builder.Configuration.GetConnectionString("MySQL").ToSafeValue();
-mysqlConnection = encryptionService.DecryptDynamic(mysqlConnection, plassonFarmKey);
 
 builder.Services.AddDbContext<SqlContext>(opt => opt.UseMySql(
-    mysqlConnection, ServerVersion.Parse(serverVersion)));
+    mysqlConnection, ServerVersion.Parse("8.0.33")));
 
 #endregion
 

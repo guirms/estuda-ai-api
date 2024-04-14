@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Driver;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 

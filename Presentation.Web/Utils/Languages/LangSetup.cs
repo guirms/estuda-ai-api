@@ -1,4 +1,5 @@
-﻿using Domain.Utils.Languages;
+﻿using Domain.Objects.Enums.Language;
+using Domain.Utils.Languages;
 using System.Reflection;
 using System.Resources;
 

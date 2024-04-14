@@ -24,6 +24,7 @@ namespace Presentation.Web.NativeInjector
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             #endregion
 
@@ -37,8 +38,6 @@ namespace Presentation.Web.NativeInjector
 
             services.AddTransient<IValidator<UserRequest>, UserRequestValidator>();
             services.AddTransient<IValidator<LogInRequest>, LogInRequestValidator>();
-            services.AddTransient<IValidator<NewPasswordRequest>, NewPasswordRequestValidator>();
-            services.AddTransient<IValidator<PasswordRecoveryRequest>, PasswordRecoveryRequestValidator>();
 
             #endregion
 

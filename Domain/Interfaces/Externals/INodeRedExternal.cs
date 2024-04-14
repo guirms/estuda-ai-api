@@ -2,6 +2,6 @@
 {
     public interface INodeRedExternal
     {
-        Task Change(BatchRequest batchRequest);
+        Task Change();
     }
 }

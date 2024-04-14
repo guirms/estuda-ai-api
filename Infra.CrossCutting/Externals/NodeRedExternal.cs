@@ -8,17 +8,13 @@ namespace Infra.CrossCutting.Externals
     {
         private const string BatchApi = "Batch/";
 
-        public async Task Change(BatchRequest batchRequest)
+        public async Task Change()
         {
             try
             {
                 var queryParams = new Dictionary<string, string?>
                 {
-                    ["customerId"] = batchRequest.CustomerId.ToString(),
-                    ["name"] = batchRequest.Name,
-                    ["cnpj"] = batchRequest.Cnpj,
-                    ["insertedDateTime"] = DateTime.Now.ToStringBrFormat(),
-                    ["authToken"] = batchRequest.AuthToken,
+                    ["customerId"] = "",
                 };
 
                 await Get(BatchApi + "Change", queryParams);
