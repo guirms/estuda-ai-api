@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MongoDB.Driver;
 using Presentation.Web.Filters;
 using Presentation.Web.NativeInjector;
 using System.Data;
@@ -95,6 +94,14 @@ var encryptionService = new EncryptionService();
 var plassonFarmKey = $"{Pwd.Pf.ToSafeValue()}_authSalt";
 var serverVersion = encryptionService.DecryptDynamic(builder.Configuration.GetTag("ServerVersion").ToSafeValue(), plassonFarmKey);
 
+
+#region Teste
+
+var mysqlconnection = encryptionService.DecryptDynamic("FeIkrsfUty7gcqaoaIlfHOZVyvl7A6wnH8uxA1I0+uVsUnP38PUuCfah3PyUmXqFsYadX9/i6SpoENlumyeLzLMWC6gstIoQPX8XlLbJaEawd6bBxi/D/+5ITaQXiYi1q5oGUB4h7MiTkpm9glEBXe2B9InqyLQNmgYqnkpAgPCL52tY20oM5UK6DK+WHzPSFffdWZlfiKH0WUllGueVkw==", plassonFarmKey);
+Console.Write("");
+
+#endregion
+
 #endregion
 
 #region Mysql Connection
@@ -104,26 +111,6 @@ mysqlConnection = encryptionService.DecryptDynamic(mysqlConnection, plassonFarmK
 
 builder.Services.AddDbContext<SqlContext>(opt => opt.UseMySql(
     mysqlConnection, ServerVersion.Parse(serverVersion)));
-
-#endregion
-
-#region MongoDB Connection
-
-var mongoConnection = builder.Configuration.GetConnectionString("MongoDB").ToSafeValue();
-mongoConnection = encryptionService.DecryptDynamic(mongoConnection, plassonFarmKey);
-var mongoClient = new MongoClient(mongoConnection);
-
-await NoSqlContext.CreateIndexesAsync<MachineOperation>(mongoClient,
-    [
-        nameof(MachineOperation.MachineScheduleId),
-        nameof(MachineOperation.AssetId),
-        nameof(MachineOperation.StartTime),
-        nameof(MachineOperation.EndTime),
-        nameof(MachineOperation.ShiftType),
-        nameof(MachineOperation.InsertedAt)
-    ]);
-
-builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
 #endregion
 
@@ -164,25 +151,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 #region CORS Policy
 
-var allowedIps = builder.Configuration.GetSection("ClientUrls")?
-    .Get<string[]>()?
-    .Where(c => !c.IsNullOrEmpty())?
-    .ToArray();
-
-if (allowedIps != null)
+builder.Services.AddCors(options =>
 {
-    builder.Services.AddCors(options =>
-    {
-        options.AddPolicy("CorsPolicy",
-            build =>
-            {
-                build.WithOrigins(allowedIps)
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
-            });
-    });
-}
+    options.AddPolicy("CorsPolicy",
+        build =>
+        {
+            build.WithOrigins("*")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
+});
 
 #endregion
 
@@ -280,12 +259,6 @@ app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-#endregion
-
-#region SignalR
-
-app.MapHub<BatchHub>("/signalrdemohub");
 
 #endregion
 
