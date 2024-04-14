@@ -142,31 +142,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy",
         build =>
         {
-            build.WithOrigins("*")
+            build.WithOrigins("http://*:3000")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials();
         });
 });
-
-#endregion
-
-#region SignalR
-
-builder.Services.AddSignalR();
-
-#endregion
-
-#region SSL Certificate
-
-if (builder.Environment.IsProduction())
-    builder.WebHost.ConfigureKestrel(s =>
-    {
-        s.ListenAnyIP(5000, options =>
-        {
-            options.UseHttps("certificate.pfx", "certificatefarmplasson2k24");
-        });
-    });
 
 #endregion
 
