@@ -9,7 +9,7 @@ using Presentation.Web.Utils.Languages;
 
 namespace Presentation.Web.Filters
 {
-    public class ActionFilter(IHttpContextAccessor contextAccessor, IUserService userService) : ControllerBase, IActionFilter
+    public class ActionFilter(IHttpContextAccessor contextAccessor) : ControllerBase, IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {
@@ -35,30 +35,10 @@ namespace Presentation.Web.Filters
                 throw new FileNotFoundException("An unexpected error occurred during screen translation");
             }
 
-            var displayName = context.ActionDescriptor.DisplayName?.ToLower() ?? "";
-            var fromIotMethods = new[] { "machinedata.save" };
-            var isFromIot = false;
-
-            foreach (var url in fromIotMethods)
-            {
-                if (displayName.Contains(url))
-                    isFromIot = true;
-            }
-
-            var isAllowAnonymous = context.ActionDescriptor.EndpointMetadata
-                                 .Any(e => e.GetType() == typeof(AllowAnonymousAttribute));
-
             contextAccessor.SaveTokens();
 
-            if (!isAllowAnonymous && !HttpContextHelper.IsValidAuthToken())
-            {
-                userService.LogOut();
-                context.Result = StatusCode(StatusCodes.Status403Forbidden);
-            }
-            else if (isFromIot && !HttpContextHelper.IsAssetPasswordCorrect())
-                context.Result = ThrowError("AssetNotFound");
+            if (!HttpContextHelper.IsValidAuthToken())
+                context.Result = StatusCode(StatusCodes.Status401Unauthorized);
         }
-
-        private BadRequestObjectResult ThrowError(string message) => BadRequest(Translator.Translate(message));
     }
 }

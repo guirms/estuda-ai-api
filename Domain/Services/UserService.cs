@@ -97,8 +97,6 @@ namespace Domain.Services
             return new LogInResponse(null, sessionToken);
         }
 
-        public void LogOut() => contextAccessor.HttpContext?.Response.Cookies.Delete(Token.TokenKey);
-
         public async Task<UserSessionResponse> HasValidSession(bool validateAssetFilter)
         {
             var hasAsset = false;

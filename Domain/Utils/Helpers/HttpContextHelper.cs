@@ -51,8 +51,6 @@ namespace Domain.Utils.Helpers
             }
         }
 
-        public static bool IsAssetPasswordCorrect() => HeaderAuthToken?.GetClaimValue(Token.ClaimPassword) == Pwd.Asset;
-
         public static void SaveTokens(this IHttpContextAccessor contextAccessor)
         {
             CookieAuthToken = contextAccessor.GetAuthTokenByCookie();
