@@ -1,5 +1,4 @@
 using Domain.Interfaces.Services;
-using Domain.Objects.Requests.Customer;
 using Domain.Objects.Requests.User;
 using Domain.Utils.Helpers;
 using Domain.Utils.Languages;
@@ -7,7 +6,6 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Presentation.Web.Controllers.Attributes;
 
 namespace Presentation.Web.Controllers
 {

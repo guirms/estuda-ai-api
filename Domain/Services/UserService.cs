@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
-using Domain.Interfaces.Externals;
-using Domain.Interfaces.Mails;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Models;
-using Domain.Objects.Requests.Customer;
-using Domain.Objects.Requests.Machine;
 using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
 using Domain.Objects.Responses.Machine;

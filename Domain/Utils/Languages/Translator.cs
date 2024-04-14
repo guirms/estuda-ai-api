@@ -1,5 +1,4 @@
-﻿using Domain.Objects.Enums.Language;
-using System.Resources;
+﻿using System.Resources;
 
 namespace Domain.Utils.Languages
 {

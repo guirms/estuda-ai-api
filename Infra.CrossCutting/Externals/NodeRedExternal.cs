@@ -1,5 +1,4 @@
 ﻿using Domain.Interfaces.Externals;
-using Domain.Objects.Requests.Batch;
 using Domain.Utils.Helpers;
 using Microsoft.Extensions.Configuration;
 

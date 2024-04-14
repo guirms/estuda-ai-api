@@ -1,5 +1,4 @@
-﻿using Domain.Objects.Requests.Customer;
-using Domain.Objects.Requests.User;
+﻿using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
 using Domain.Objects.Responses.Machine;
 

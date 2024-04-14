@@ -1,6 +1,4 @@
-﻿using Domain.Objects.Requests.Batch;
-
-namespace Domain.Interfaces.Externals
+﻿namespace Domain.Interfaces.Externals
 {
     public interface INodeRedExternal
     {

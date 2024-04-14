@@ -1,8 +1,6 @@
-﻿using Domain.Models;
-using Domain.Utils.Constants;
+﻿using Domain.Utils.Constants;
 using Domain.Utils.Helpers;
 using Domain.Utils.Languages;
-using Infra.CrossCutting.Hubs;
 using Infra.CrossCutting.Security;
 using Infra.Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
