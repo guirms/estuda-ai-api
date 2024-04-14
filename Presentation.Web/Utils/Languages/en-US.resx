@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Box" xml:space="preserve">
+    <value>Bx</value>
+  </data>
+  <data name="BoxPerHour" xml:space="preserve">
+    <value>Bx/h</value>
+  </data>
+  <data name="Broken" xml:space="preserve">
+    <value>Broken</value>
+  </data>
+  <data name="Cracked" xml:space="preserve">
+    <value>Cracked</value>
+  </data>
+  <data name="DifferentDays" xml:space="preserve">
+    <value>Search days cannot be different</value>
+  </data>
+  <data name="Dirty" xml:space="preserve">
+    <value>Dirty</value>
+  </data>
+  <data name="Eggs" xml:space="preserve">
+    <value>Eggs</value>
+  </data>
+  <data name="Emergency" xml:space="preserve">
+    <value>Emergency</value>
+  </data>
+  <data name="ErrorGettingEggResults" xml:space="preserve">
+    <value>Error loading eggs data</value>
+  </data>
+  <data name="ErrorGettingMachineSchedules" xml:space="preserve">
+    <value>Error loading machine programs</value>
+  </data>
+  <data name="ErrorGettingProductionResults" xml:space="preserve">
+    <value>Error loading production data</value>
+  </data>
+  <data name="ErrorSaving" xml:space="preserve">
+    <value>Error when saving</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="Industrial" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="InsufficientOutputs" xml:space="preserve">
+    <value>Insufficient outputs</value>
+  </data>
+  <data name="InvalidCategoryList" xml:space="preserve">
+    <value>Invalid category list</value>
+  </data>
+  <data name="InvalidCharacters" xml:space="preserve">
+    <value>There are invalid characters in the request</value>
+  </data>
+  <data name="Jumbo" xml:space="preserve">
+    <value>Jumbo</value>
+  </data>
+  <data name="Large" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="Leaked" xml:space="preserve">
+    <value>Leaked</value>
+  </data>
+  <data name="LoadCellError" xml:space="preserve">
+    <value>Load Cell Error</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="NoContextFound" xml:space="preserve">
+    <value>No context found</value>
+  </data>
+  <data name="NoEggCategoriesFound" xml:space="preserve">
+    <value>No egg categories found</value>
+  </data>
+  <data name="FileDescriptionError" xml:space="preserve">
+    <value>Error fetching description document</value>
+  </data>
+  <data name="NoMachineFound" xml:space="preserve">
+    <value>No machines found</value>
+  </data>
+  <data name="NoMachineOperationFound" xml:space="preserve">
+    <value>No machine operation found</value>
+  </data>
+  <data name="NoMachineScheduleFound" xml:space="preserve">
+    <value>No time found</value>
+  </data>
+  <data name="NoShiftFound" xml:space="preserve">
+    <value>No shifts found</value>
+  </data>
+  <data name="NoWeekScheduledFound" xml:space="preserve">
+    <value>No weekly schedule found</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="RemainingTime" xml:space="preserve">
+    <value>Remaining time</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="ScheduledStop" xml:space="preserve">
+    <value>Scheduled stops</value>
+  </data>
+  <data name="ScheduledStopConflict" xml:space="preserve">
+    <value>Scheduled stop times conflict with another stop</value>
+  </data>
+  <data name="ShiftA" xml:space="preserve">
+    <value>Shift A</value>
+  </data>
+  <data name="ShiftB" xml:space="preserve">
+    <value>Shift B</value>
+  </data>
+  <data name="ShiftC" xml:space="preserve">
+    <value>Shift C</value>
+  </data>
+  <data name="ShiftConflict" xml:space="preserve">
+    <value>Shift schedules conflict with another shift</value>
+  </data>
+  <data name="ShiftD" xml:space="preserve">
+    <value>Shift D</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="Solenoid" xml:space="preserve">
+    <value>Solenoid</value>
+  </data>
+  <data name="SolenoidError" xml:space="preserve">
+    <value>Solenoid Error</value>
+  </data>
+  <data name="StandBy" xml:space="preserve">
+    <value>Stand by</value>
+  </data>
+  <data name="StartDateGreaterThanEndDate" xml:space="preserve">
+    <value>The start date cannot be greater than the end date</value>
+  </data>
+  <data name="StoppedMachine" xml:space="preserve">
+    <value>Stopped machine</value>
+  </data>
+  <data name="StringLengthValidation" xml:space="preserve">
+    <value>No name can exceed 15 characters</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="SuperJumbo" xml:space="preserve">
+    <value>Super jumbo</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="TotalMachineProducing" xml:space="preserve">
+    <value>Total machine producing</value>
+  </data>
+  <data name="TotalUnscheduledDowntime" xml:space="preserve">
+    <value>Total unscheduled downtime</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="UnscheduledStop" xml:space="preserve">
+    <value>Unscheduled stops</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="TotalBoxesQuantity" xml:space="preserve">
+    <value>Boxes quantity</value>
+  </data>
+  <data name="TotalEggsQuantity" xml:space="preserve">
+    <value>Eggs quantity</value>
+  </data>
+  <data name="TotalWeight" xml:space="preserve">
+    <value>Total weight</value>
+  </data>
+  <data name="Boxes" xml:space="preserve">
+    <value>Boxes</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="EggResultsReportTitle" xml:space="preserve">
+    <value>Production report</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="VisionSystemTitle" xml:space="preserve">
+    <value>Vision system</value>
+  </data>
+  <data name="TotalEggsDataTitle" xml:space="preserve">
+    <value>General data</value>
+  </data>
+  <data name="EggsProducedTitle" xml:space="preserve">
+    <value>Eggs produced</value>
+  </data>
+  <data name="ErrorValidatingShift" xml:space="preserve">
+    <value>Shifts cannot be the same</value>
+  </data>
+  <data name="InvalidUsername" xml:space="preserve">
+    <value>The user name is invalid</value>
+  </data>
+  <data name="InvalidUserPassword" xml:space="preserve">
+    <value>The user password is invalid</value>
+  </data>
+  <data name="ErrorLoggingIn" xml:space="preserve">
+    <value>Error when logging in</value>
+  </data>
+  <data name="InvalidScheduledStopName" xml:space="preserve">
+    <value>The scheduled stop name is invalido</value>
+  </data>
+  <data name="InvalidUsernameOrPassword" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
+  <data name="InvalidCnpj" xml:space="preserve">
+    <value>Invalid CNPJ</value>
+  </data>
+  <data name="CustomerWithSameNameError" xml:space="preserve">
+    <value>There is already a customer with that name</value>
+  </data>
+  <data name="ErrorDeleting" xml:space="preserve">
+    <value>Error when deleting</value>
+  </data>
+  <data name="ErrorUpdatingBatch" xml:space="preserve">
+    <value>Error when updating shift</value>
+  </data>
+  <data name="ErrorGeneratingReportFile" xml:space="preserve">
+    <value>Error generating report file</value>
+  </data>
+  <data name="CustomerNotFound" xml:space="preserve">
+    <value>Customer not found</value>
+  </data>
+  <data name="SameBatchError" xml:space="preserve">
+    <value>The batches cannot be the same</value>
+  </data>
+  <data name="NoCustomersFound" xml:space="preserve">
+    <value>No customers found</value>
+  </data>
+  <data name="ErrorCommunicatingWithExternalService" xml:space="preserve">
+    <value>Error communicating with external service</value>
+  </data>
+  <data name="ErrorStartingBatch" xml:space="preserve">
+    <value>Error starting batch</value>
+  </data>
+  <data name="ErrorReceivingBatchConfirm" xml:space="preserve">
+    <value>Error receiving batch confirmation</value>
+  </data>
+  <data name="RegisterNotFound" xml:space="preserve">
+    <value>Register not found</value>
+  </data>
+  <data name="BatchNotConfirmed" xml:space="preserve">
+    <value>Batch not confirmed</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="UserSessionExpired" xml:space="preserve">
+    <value>The user session has expired</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="ErrorStoppingBatchControl" xml:space="preserve">
+    <value>Error stopping batch control</value>
+  </data>
+  <data name="InvalidPage" xml:space="preserve">
+    <value>Invalid page</value>
+  </data>
+  <data name="ErrorApplyingFilters" xml:space="preserve">
+    <value>Error applying filters</value>
+  </data>
+  <data name="ErrorSavingCredentials" xml:space="preserve">
+    <value>Error saving credential</value>
+  </data>
+  <data name="ErrorGettingRequestIp" xml:space="preserve">
+    <value>Error getting the request IP</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid password</value>
+  </data>
+  <data name="ErrorValidatingCredentials" xml:space="preserve">
+    <value>Error validating credentials</value>
+  </data>
+  <data name="InvalidLicense" xml:space="preserve">
+    <value>Invalid license</value>
+  </data>
+  <data name="NoLicenseFound" xml:space="preserve">
+    <value>No license found</value>
+  </data>
+  <data name="ErrorGeneratingKey" xml:space="preserve">
+    <value>Error generating license key</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Invalid email</value>
+  </data>
+  <data name="InvalidLicenseKey" xml:space="preserve">
+    <value>Invalid license key</value>
+  </data>
+  <data name="ErrorRecoveringPassword" xml:space="preserve">
+    <value>Error recovering password</value>
+  </data>
+  <data name="ErrorSendingEmail" xml:space="preserve">
+    <value>Error sending email</value>
+  </data>
+  <data name="PasswordRecovery" xml:space="preserve">
+    <value>Password recovery</value>
+  </data>
+  <data name="YourRecoveryCodeIs" xml:space="preserve">
+    <value>Your recovery code is</value>
+  </data>
+  <data name="InvalidRecoveryCode" xml:space="preserve">
+    <value>Invalid recovery code</value>
+  </data>
+  <data name="InvalidDocument" xml:space="preserve">
+    <value>Invalid document</value>
+  </data>
+  <data name="UserWithSameDocumentError" xml:space="preserve">
+    <value>A user with this document already exists</value>
+  </data>
+  <data name="UserWithSameKeyError" xml:space="preserve">
+    <value>A user with this key already exists</value>
+  </data>
+  <data name="UserWithSameEmailError" xml:space="preserve">
+    <value>A user with this email already exists</value>
+  </data>
+  <data name="PasswordMustContainUppercaseAndLowercase" xml:space="preserve">
+    <value>Password must contain at least one lowercase and one uppercase letter</value>
+  </data>
+  <data name="PasswordMustHaveSpecialCharacter" xml:space="preserve">
+    <value>Password must have at least one special character"</value>
+  </data>
+  <data name="PasswordMustHaveValidLength" xml:space="preserve">
+    <value>Password must have between 8 and 50 characters</value>
+  </data>
+  <data name="PasswordsAreNotTheSame" xml:space="preserve">
+    <value>Passwords are not the same</value>
+  </data>
+  <data name="InvalidLatitudeLongitude" xml:space="preserve">
+    <value>Invalid latitude and longitude</value>
+  </data>
+  <data name="InvalidZipCode" xml:space="preserve">
+    <value>Invalid ZIP code</value>
+  </data>
+  <data name="ErrorUpdating" xml:space="preserve">
+    <value>Error updating</value>
+  </data>
+  <data name="PlantNotFound" xml:space="preserve">
+    <value>No plant found</value>
+  </data>
+  <data name="PlantWithSameCnpjError" xml:space="preserve">
+    <value>A plant with this CNPJ already exists</value>
+  </data>
+  <data name="PlantWithSameNameError" xml:space="preserve">
+    <value>A plant with this name already exists</value>
+  </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Invalid name</value>
+  </data>
+  <data name="EggWasherNotFound" xml:space="preserve">
+    <value>No egg washer found</value>
+  </data>
+  <data name="ModelNotFound" xml:space="preserve">
+    <value>No model found</value>
+  </data>
+  <data name="DryerNotFound" xml:space="preserve">
+    <value>No dryer found</value>
+  </data>
+  <data name="VisionSystemNotFound" xml:space="preserve">
+    <value>No vision system found</value>
+  </data>
+  <data name="AssetNotFound" xml:space="preserve">
+    <value>Asset not found</value>
+  </data>
+  <data name="WaitFiveMinutesToSendEmailAgain" xml:space="preserve">
+    <value>Wait five minutes to send the email again</value>
+  </data>
+  <data name="AssetAlreadyLicensed" xml:space="preserve">
+    <value>Asset already licensed</value>
+  </data>
+  <data name="ErrorGettingAssetKey" xml:space="preserve">
+    <value>Error getting asset key</value>
+  </data>
+  <data name="InvalidAuthToken" xml:space="preserve">
+    <value>Invalid authentication token</value>
+  </data>
+  <data name="UserWithoutPermission" xml:space="preserve">
+    <value>User without permission</value>
+  </data>
+  <data name="DontReply" xml:space="preserve">
+    <value>DontReply</value>
+  </data>
+  <data name="ErrorLoggingOut" xml:space="preserve">
+    <value>Error logging out</value>
+  </data>
+  <data name="TooManyRequestsWaitAMoment" xml:space="preserve">
+    <value>Too many API requests. Please wait a moment</value>
+  </data>
+  <data name="ErrorGeneratingUserKey" xml:space="preserve">
+    <value>Error generating authentication ke</value>
+  </data>
+  <data name="ValidTokenAlreadyGenerated" xml:space="preserve">
+    <value>Valid token already generated</value>
+  </data>
+  <data name="ErrorGettingPlantSchema" xml:space="preserve">
+    <value>Error getting plant schema</value>
+  </data>
+  <data name="ErrorGettingSessionInfo" xml:space="preserve">
+    <value>Error getting session information</value>
+  </data>
+  <data name="LayoutNotFound" xml:space="preserve">
+    <value>Layout not found</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Product not found</value>
+  </data>
+  <data name="InvalidIp" xml:space="preserve">
+    <value>Invalid IP</value>
+  </data>
+</root>

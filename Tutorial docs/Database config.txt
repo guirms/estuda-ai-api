@@ -1,0 +1,16 @@
+---------- Root user config ----------
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewPassword';
+
+---------- Database connection ----------
+-- Login
+mysql -u root -p
+-- Use the database:
+USE DatabaseName;
+
+---------- Frequently used codes ----------
+-- Show all tables
+SHOW TABLES;
+
+-- Show database version
+select version();
+

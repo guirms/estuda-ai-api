@@ -1,0 +1,10 @@
+-------------------------- SETUP --------------------------
+1 - Open the nuget console following the path: Tools > Nuget package manager > Package manager console
+2 - Change default project to "4 - Infrastructure\Infra.Data"
+
+-------------------------- COMMANDS --------------------------
+1 - Add migration: "add-migration MIGRATIONNAME"
+2 - Remove last add migration: "remove-migration"
+3 - Update database: "update-database"
+3.1 - Update database with sql query: "update-database -Verbose"
+

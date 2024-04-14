@@ -1,0 +1,21 @@
+IoT2050 pass: siemens123
+
+1 - Publish on visual studio setting to armx64 and singlefile
+
+2 - Open publish folder and zip Presentation.Web and appsettings.json files
+
+3 - Open cmd on publish folder and run following commands:
+- scp ./publish.zip root@10.17.40.175:~ 
+- ssh root@10.17.40.175
+- unzip ./publish.zip (if command not found error happens, run: sudo apt-get install unzip)
+- y
+- y
+- chmod +x ./Presentation.Web
+- ./Presentation.Web
+
+4 - Open other terminal and run the following command:
+ssh -L 61000:localhost:5000 root@10.17.40.175
+
+
+these settings, the endpoint must be: http://localhost:61000
+

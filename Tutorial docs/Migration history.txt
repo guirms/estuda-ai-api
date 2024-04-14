@@ -1,0 +1,35 @@
+--------------------------------------------------- Initial Migration ------------------------------------------------------------------------------------------------------ 
+CREATE DATABASE `plasson_farm`;
+
+CREATE TABLE `__EFMigrationsHistory` (
+          `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+          `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+          CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+      ) CHARACTER SET=utf8mb4;
+
+ALTER DATABASE CHARACTER SET utf8mb4;
+
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20230601164547_Add_Database_Structure_Tables', '7.0.5');
+--------------------------------------------------- Adding TimeScheduling table ----------------------------------------------------------------------------------------
+CREATE TABLE `TimeScheduling` (
+          `TimeSchedulingId` int NOT NULL AUTO_INCREMENT,
+          `Shift` int NOT NULL,
+          `DayOfTheWeek` int NOT NULL,
+          `Date` date NOT NULL,
+          `InitialProductionTime` time(0) NOT NULL,
+          `FinalProductionTime` time(0) NOT NULL,
+          CONSTRAINT `PK_TimeScheduling` PRIMARY KEY (`TimeSchedulingId`)
+      ) CHARACTER SET=utf8mb4;
+--------------------------------------------------- Adding Machine Operations table ----------------------------------------------------------------------------------------
+CREATE TABLE `MachineOperations` (
+          `MachineOperationsId` int NOT NULL AUTO_INCREMENT,
+          `Status` int NOT NULL,
+          `StartTime` time(0) NOT NULL,
+          `EndTime` time(0) NOT NULL,
+          `TimeSchedulingId` int NOT NULL,
+          CONSTRAINT `PK_MachineOperations` PRIMARY KEY (`MachineOperationsId`),
+          CONSTRAINT `FK_MachineOperations_TimeScheduling_TimeSchedulingId` FOREIGN KEY (`TimeSchedulingId`) REFERENCES `TimeScheduling` (`TimeSchedulingId`) ON DELETE CASCADE
+      ) CHARACTER SET=utf8mb4;
+
+CREATE INDEX `IX_MachineOperations_TimeSchedulingId` ON `MachineOperations` (`TimeSchedulingId`);

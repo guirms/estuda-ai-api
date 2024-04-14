@@ -1,0 +1,21 @@
+SENHA: siemens123
+
+1 - Publicar no visual studio configurando para armx64 e arquivo único
+
+2 - Abrir pasta de publicação, zipar Presentation.Web e appsettings.json
+
+3 - Abrir cmd na pasta de publicação e rodas os seguintes comandos:
+- scp ./publish.zip root@10.17.40.175:~/PlassonFarm
+- ssh root@10.17.40.175
+- unzip ./publish.zip (caso dê erro de command not found, rodar: sudo apt-get install unzip)
+- y
+- y
+- chmod +x ./Presentation.Web
+- ./Presentation.Web
+
+4 - Abrir outro terminal e digitar o seguinte comando:
+ssh -L 61000:localhost:5000 root@10.17.40.175
+
+
+O endpoint deve ser: http://localhost:61000
+

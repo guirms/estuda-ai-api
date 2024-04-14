@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Box" xml:space="preserve">
+    <value>箱</value>
+  </data>
+  <data name="BoxPerHour" xml:space="preserve">
+    <value>箱/时</value>
+  </data>
+  <data name="Broken" xml:space="preserve">
+    <value>破蛋</value>
+  </data>
+  <data name="Cracked" xml:space="preserve">
+    <value>裂纹蛋</value>
+  </data>
+  <data name="DifferentDays" xml:space="preserve">
+    <value>搜索天数不能不同</value>
+  </data>
+  <data name="Dirty" xml:space="preserve">
+    <value>脏蛋</value>
+  </data>
+  <data name="Eggs" xml:space="preserve">
+    <value>鸡蛋</value>
+  </data>
+  <data name="Emergency" xml:space="preserve">
+    <value>紧急情况</value>
+  </data>
+  <data name="ErrorGettingEggResults" xml:space="preserve">
+    <value>加载鸡蛋数据时出错</value>
+  </data>
+  <data name="ErrorGettingMachineSchedules" xml:space="preserve">
+    <value>加载计算机程序时出错</value>
+  </data>
+  <data name="ErrorGettingProductionResults" xml:space="preserve">
+    <value>加载生产数据时出错</value>
+  </data>
+  <data name="ErrorSaving" xml:space="preserve">
+    <value>保存时出错</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>星期五</value>
+  </data>
+  <data name="Industrial" xml:space="preserve">
+    <value>工业蛋</value>
+  </data>
+  <data name="InsufficientOutputs" xml:space="preserve">
+    <value>输出不足</value>
+  </data>
+  <data name="InvalidCategoryList" xml:space="preserve">
+    <value>类别列表无效</value>
+  </data>
+  <data name="InvalidCharacters" xml:space="preserve">
+    <value>请求中包含无效字符</value>
+  </data>
+  <data name="Jumbo" xml:space="preserve">
+    <value>特大号</value>
+  </data>
+  <data name="Large" xml:space="preserve">
+    <value>大号</value>
+  </data>
+  <data name="Leaked" xml:space="preserve">
+    <value>流清蛋</value>
+  </data>
+  <data name="LoadCellError" xml:space="preserve">
+    <value>传感器误差</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>星期一</value>
+  </data>
+  <data name="NoContextFound" xml:space="preserve">
+    <value>未找到上下文</value>
+  </data>
+  <data name="NoEggCategoriesFound" xml:space="preserve">
+    <value>未找到鸡蛋类别</value>
+  </data>
+  <data name="FileDescriptionError" xml:space="preserve">
+    <value>获取描述文档时出错</value>
+  </data>
+  <data name="NoMachineFound" xml:space="preserve">
+    <value>找不到任何设备</value>
+  </data>
+  <data name="NoMachineOperationFound" xml:space="preserve">
+    <value>找不到机器操作</value>
+  </data>
+  <data name="NoMachineScheduleFound" xml:space="preserve">
+    <value>找不到时间</value>
+  </data>
+  <data name="NoShiftFound" xml:space="preserve">
+    <value>未找到班次</value>
+  </data>
+  <data name="NoWeekScheduledFound" xml:space="preserve">
+    <value>找不到周计划</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>红色</value>
+  </data>
+  <data name="RemainingTime" xml:space="preserve">
+    <value>剩余时间</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>星期六</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>秤</value>
+  </data>
+  <data name="ScheduledStop" xml:space="preserve">
+    <value>计划停止</value>
+  </data>
+  <data name="ScheduledStopConflict" xml:space="preserve">
+    <value>计划停止时间与其他停止时间冲突</value>
+  </data>
+  <data name="ShiftA" xml:space="preserve">
+    <value>班次A</value>
+  </data>
+  <data name="ShiftB" xml:space="preserve">
+    <value>班次B</value>
+  </data>
+  <data name="ShiftC" xml:space="preserve">
+    <value>班次C</value>
+  </data>
+  <data name="ShiftConflict" xml:space="preserve">
+    <value>班次安排与其他班次冲突</value>
+  </data>
+  <data name="ShiftD" xml:space="preserve">
+    <value>班次D</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>小号</value>
+  </data>
+  <data name="Solenoid" xml:space="preserve">
+    <value>电磁阀</value>
+  </data>
+  <data name="SolenoidError" xml:space="preserve">
+    <value>电磁阀错误</value>
+  </data>
+  <data name="StandBy" xml:space="preserve">
+    <value>备用支持</value>
+  </data>
+  <data name="StartDateGreaterThanEndDate" xml:space="preserve">
+    <value>开始日期不能大于结束日期</value>
+  </data>
+  <data name="StoppedMachine" xml:space="preserve">
+    <value>机器停止</value>
+  </data>
+  <data name="StringLengthValidation" xml:space="preserve">
+    <value>任何名称都不能超过15个字符</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>星期日</value>
+  </data>
+  <data name="SuperJumbo" xml:space="preserve">
+    <value>过大号</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>星期四</value>
+  </data>
+  <data name="TotalMachineProducing" xml:space="preserve">
+    <value>机器总产量</value>
+  </data>
+  <data name="TotalUnscheduledDowntime" xml:space="preserve">
+    <value>计划外停机时间总计</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>星期二</value>
+  </data>
+  <data name="UnscheduledStop" xml:space="preserve">
+    <value>非计划停机</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>星期三</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>白色</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>年-月-日</value>
+  </data>
+  <data name="TotalBoxesQuantity" xml:space="preserve">
+    <value>箱子数量</value>
+  </data>
+  <data name="TotalEggsQuantity" xml:space="preserve">
+    <value>鸡蛋数量</value>
+  </data>
+  <data name="TotalWeight" xml:space="preserve">
+    <value>总重量</value>
+  </data>
+  <data name="Boxes" xml:space="preserve">
+    <value>箱子数量</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="EggResultsReportTitle" xml:space="preserve">
+    <value>生产报告</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>重量</value>
+  </data>
+  <data name="VisionSystemTitle" xml:space="preserve">
+    <value>视觉系统</value>
+  </data>
+  <data name="TotalEggsDataTitle" xml:space="preserve">
+    <value>一般数据</value>
+  </data>
+  <data name="EggsProducedTitle" xml:space="preserve">
+    <value>生产的鸡蛋</value>
+  </data>
+  <data name="ErrorValidatingShift" xml:space="preserve">
+    <value>班次不能相同</value>
+  </data>
+  <data name="InvalidUsername" xml:space="preserve">
+    <value>用户名无效</value>
+  </data>
+  <data name="InvalidUserPassword" xml:space="preserve">
+    <value>用户密码无效</value>
+  </data>
+  <data name="ErrorLoggingIn" xml:space="preserve">
+    <value>登录时出错</value>
+  </data>
+  <data name="InvalidScheduledStopName" xml:space="preserve">
+    <value>计划的站点名称无效</value>
+  </data>
+  <data name="InvalidUsernameOrPassword" xml:space="preserve">
+    <value>用户名或密码无效</value>
+  </data>
+  <data name="InvalidCnpj" xml:space="preserve">
+    <value>无效的CNPJ</value>
+  </data>
+  <data name="CustomerWithSameNameError" xml:space="preserve">
+    <value>已经有一个客户使用该名称</value>
+  </data>
+  <data name="ErrorDeleting" xml:space="preserve">
+    <value>删除时出错</value>
+  </data>
+  <data name="ErrorUpdatingBatch" xml:space="preserve">
+    <value>更新班次时出错</value>
+  </data>
+  <data name="ErrorGeneratingReportFile" xml:space="preserve">
+    <value>生成报告文件时出错</value>
+  </data>
+  <data name="CustomerNotFound" xml:space="preserve">
+    <value>未找到客户</value>
+  </data>
+  <data name="SameBatchError" xml:space="preserve">
+    <value>批次不能相同</value>
+  </data>
+  <data name="NoCustomersFound" xml:space="preserve">
+    <value>未找到客户</value>
+  </data>
+  <data name="ErrorCommunicatingWithExternalService" xml:space="preserve">
+    <value>与外部服务通信时出错</value>
+  </data>
+  <data name="ErrorStartingBatch" xml:space="preserve">
+    <value>启动批处理时出错</value>
+  </data>
+  <data name="ErrorReceivingBatchConfirm" xml:space="preserve">
+    <value>接收批次确认时出错</value>
+  </data>
+  <data name="RegisterNotFound" xml:space="preserve">
+    <value>注册没有找到</value>
+  </data>
+  <data name="BatchNotConfirmed" xml:space="preserve">
+    <value>批次未确认</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>禁用</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="UserSessionExpired" xml:space="preserve">
+    <value>用户时段已过期</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>找不到用户</value>
+  </data>
+  <data name="ErrorStoppingBatchControl" xml:space="preserve">
+    <value>停止批处理控制时出错</value>
+  </data>
+  <data name="InvalidPage" xml:space="preserve">
+    <value>无效页面</value>
+  </data>
+  <data name="ErrorApplyingFilters" xml:space="preserve">
+    <value>应用过滤器时出错</value>
+  </data>
+  <data name="ErrorSavingCredentials" xml:space="preserve">
+    <value>保存凭据时出错</value>
+  </data>
+  <data name="ErrorGettingRequestIp" xml:space="preserve">
+    <value>获取请求 IP 时出错</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>无效密码</value>
+  </data>
+  <data name="ErrorValidatingCredentials" xml:space="preserve">
+    <value>验证凭据时出错</value>
+  </data>
+  <data name="InvalidLicense" xml:space="preserve">
+    <value>无效许可证</value>
+  </data>
+  <data name="NoLicenseFound" xml:space="preserve">
+    <value>未找到许可证</value>
+  </data>
+  <data name="ErrorGeneratingKey" xml:space="preserve">
+    <value>生成许可证密钥时出错</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>无效的电子邮件</value>
+  </data>
+  <data name="InvalidLicenseKey" xml:space="preserve">
+    <value>无效的许可证密钥</value>
+  </data>
+  <data name="ErrorRecoveringPassword" xml:space="preserve">
+    <value>恢复密码时出错</value>
+  </data>
+  <data name="ErrorSendingEmail" xml:space="preserve">
+    <value>发送电子邮件时出错</value>
+  </data>
+  <data name="PasswordRecovery" xml:space="preserve">
+    <value>密码恢复</value>
+  </data>
+  <data name="YourRecoveryCodeIs" xml:space="preserve">
+    <value>您的恢复代码是</value>
+  </data>
+  <data name="InvalidRecoveryCode" xml:space="preserve">
+    <value>无效的恢复代码</value>
+  </data>
+  <data name="InvalidDocument" xml:space="preserve">
+    <value>无效文档</value>
+  </data>
+  <data name="UserWithSameDocumentError" xml:space="preserve">
+    <value>已存在使用此文档的用户</value>
+  </data>
+  <data name="UserWithSameKeyError" xml:space="preserve">
+    <value>已存在使用此密钥的用户</value>
+  </data>
+  <data name="UserWithSameEmailError" xml:space="preserve">
+    <value>已存在使用此电子邮件的用户</value>
+  </data>
+  <data name="PasswordMustContainUppercaseAndLowercase" xml:space="preserve">
+    <value>密码必须包含至少一个小写字母和一个大写字母</value>
+  </data>
+  <data name="PasswordMustHaveSpecialCharacter" xml:space="preserve">
+    <value>密码必须至少包含一个特殊字符</value>
+  </data>
+  <data name="PasswordMustHaveValidLength" xml:space="preserve">
+    <value>密码长度必须在8到50个字符之间</value>
+  </data>
+  <data name="PasswordsAreNotTheSame" xml:space="preserve">
+    <value>密码不相同</value>
+  </data>
+  <data name="InvalidLatitudeLongitude" xml:space="preserve">
+    <value>无效的纬度和经度</value>
+  </data>
+  <data name="InvalidZipCode" xml:space="preserve">
+    <value>无效的邮政编码</value>
+  </data>
+  <data name="ErrorUpdating" xml:space="preserve">
+    <value>更新时出错</value>
+  </data>
+  <data name="PlantNotFound" xml:space="preserve">
+    <value>未找到任何植物</value>
+  </data>
+  <data name="PlantWithSameCnpjError" xml:space="preserve">
+    <value>已存在使用此CNPJ的植物</value>
+  </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>无效名称</value>
+  </data>
+  <data name="PlantWithSameNameError" xml:space="preserve">
+    <value>已存在使用此名称的植物</value>
+  </data>
+  <data name="DryerNotFound" xml:space="preserve">
+    <value>未找到烘干机</value>
+  </data>
+  <data name="EggWasherNotFound" xml:space="preserve">
+    <value>未找到蛋洗机</value>
+  </data>
+  <data name="ModelNotFound" xml:space="preserve">
+    <value>未找到模型</value>
+  </data>
+  <data name="VisionSystemNotFound" xml:space="preserve">
+    <value>未找到视觉系统</value>
+  </data>
+  <data name="AssetNotFound" xml:space="preserve">
+    <value>未找到域</value>
+  </data>
+  <data name="WaitFiveMinutesToSendEmailAgain" xml:space="preserve">
+    <value>请等待五分钟后再次发送电子邮件</value>
+  </data>
+  <data name="AssetAlreadyLicensed" xml:space="preserve">
+    <value>域已许可</value>
+  </data>
+  <data name="ErrorGettingAssetKey" xml:space="preserve">
+    <value>获取域密钥时出错</value>
+  </data>
+  <data name="InvalidAuthToken" xml:space="preserve">
+    <value>无效的身份验证令牌</value>
+  </data>
+  <data name="UserWithoutPermission" xml:space="preserve">
+    <value>没有权限的用户</value>
+  </data>
+  <data name="DontReply" xml:space="preserve">
+    <value>请勿回复</value>
+  </data>
+  <data name="ErrorLoggingOut" xml:space="preserve">
+    <value>退出登录时出错</value>
+  </data>
+  <data name="TooManyRequestsWaitAMoment" xml:space="preserve">
+    <value>API请求过多。请稍候</value>
+  </data>
+  <data name="ErrorGeneratingUserKey" xml:space="preserve">
+    <value>生成身份验证密钥时出错</value>
+  </data>
+  <data name="ValidTokenAlreadyGenerated" xml:space="preserve">
+    <value>有效的令牌已生成</value>
+  </data>
+  <data name="ErrorGettingPlantSchema" xml:space="preserve">
+    <value>获取工厂模式时出错</value>
+  </data>
+  <data name="ErrorGettingSessionInfo" xml:space="preserve">
+    <value>获取会话信息时出错</value>
+  </data>
+  <data name="LayoutNotFound" xml:space="preserve">
+    <value>未找到布局</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>未找到产品</value>
+  </data>
+  <data name="InvalidIp" xml:space="preserve">
+    <value>无效的IP</value>
+  </data>
+</root>
