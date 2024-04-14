@@ -570,4 +570,7 @@
   <data name="InvalidIp" xml:space="preserve">
     <value>无效的IP</value>
   </data>
+  <data name="UserSavedSuccessfully" xml:space="preserve">
+    <value>用户成功保存</value>
+  </data>
 </root>

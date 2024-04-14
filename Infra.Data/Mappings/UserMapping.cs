@@ -33,25 +33,6 @@ namespace Infra.Data.Mappings
                 .HasColumnType("char(5)")
                 .IsRequired();
 
-            builder.Property(u => u.IsBatchDisabled)
-               .IsRequired(true);
-
-            builder.Property(u => u.Key)
-                .HasColumnType("char(128)")
-                .IsRequired();
-
-            builder.Property(u => u.LastLogin)
-               .HasColumnType("datetime(0)")
-               .IsRequired(false);
-
-            builder.Property(u => u.LastPasswordRecovery)
-               .HasColumnType("datetime(0)")
-               .IsRequired(false);
-
-            builder.Property(u => u.RecoveryCode)
-                .HasColumnType("char(5)")
-                .IsRequired(false);
-
             builder.Property(u => u.InsertedAt)
                 .HasColumnType("datetime(0)")
                 .IsRequired();

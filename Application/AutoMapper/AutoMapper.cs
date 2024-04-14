@@ -18,7 +18,6 @@ namespace Application.AutoMapper
         private void UserMap()
         {
             CreateMap<UserRequest, User>()
-               .ForMember(u => u.Key, opts => opts.MapFrom(u => u.UserKey))
                .ForMember(u => u.InsertedAt, opts => opts.MapFrom(u => DateTime.Now));
 
             CreateMap<User, UserResultsResponse>()

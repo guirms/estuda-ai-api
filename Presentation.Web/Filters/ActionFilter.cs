@@ -1,6 +1,7 @@
 ﻿using Domain.Objects.Enums.Language;
 using Domain.Utils.Helpers;
 using Domain.Utils.Languages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Presentation.Web.Utils.Languages;
@@ -17,7 +18,7 @@ namespace Presentation.Web.Filters
         {
             try
             {
-                var langValue = contextAccessor.GetHeaderValue(LangConfig.LangHeaderName);
+                var langValue = contextAccessor.GetHeaderValue(LangConfig.LangHeaderName) ?? "pt-BR";
 
                 if (langValue != null && (langValue.Length != 0 && LangConfig.SupportedLanguages.Contains(langValue) &&
                     Translator.CurrentLanguage?.GetDescription() != langValue || (Translator.CurrentLanguage.HasValue && Translator.LanguageFile == null)))
@@ -33,10 +34,13 @@ namespace Presentation.Web.Filters
                 throw new FileNotFoundException("An unexpected error occurred during screen translation");
             }
 
+            var isAllowAnonymous = context.ActionDescriptor.EndpointMetadata
+                                 .Any(e => e.GetType() == typeof(AllowAnonymousAttribute));
+
             contextAccessor.SaveTokens();
 
-            if (!HttpContextHelper.IsValidAuthToken())
-                context.Result = StatusCode(StatusCodes.Status401Unauthorized);
+            if (!isAllowAnonymous && !HttpContextHelper.IsValidAuthToken())
+                context.Result = Unauthorized();
         }
     }
 }

@@ -1294,6 +1294,15 @@ namespace Presentation.Web.Utils.Languages {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário salvo com sucesso.
+        /// </summary>
+        public static string UserSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("UserSavedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A sessão do usuário expirou.
         /// </summary>
         public static string UserSessionExpired {

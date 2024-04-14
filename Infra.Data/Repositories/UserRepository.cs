@@ -12,19 +12,14 @@ namespace Infra.Data.Repositories
     {
         public async Task<User?> GetUserByEmail(string userEmail) => await _typedContext.AsNoTracking().FirstOrDefaultAsync(u => u.Email == userEmail);
 
-        public async Task HasUserWithTheSameInfo(UserRequest userRequest, string document)
+        public async Task HasUserWithTheSameInfo(UserRequest userRequest)
         {
             if (await HasUserWithSameEmail(userRequest.Email))
                 throw new InvalidOperationException("UserWithSameEmailError");
 
-            if (await HasUserWithSameDocument(document))
+            if (await HasUserWithSameDocument(userRequest.Document))
                 throw new InvalidOperationException("UserWithSameDocumentError");
-
-            if (await HasUserWithSameKey(userRequest.UserKey))
-                throw new InvalidOperationException("UserWithSameKeyError");
         }
-
-        public async Task<bool> HasUserWithSameDocument(string document) => await _typedContext.AsNoTracking().AnyAsync(u => u.Document == document);
 
         public async Task<IEnumerable<UserResultsResponse>?> GetUserResults(int currentPage, string? userName, int takeQuantity = 10)
         {
@@ -41,7 +36,6 @@ namespace Infra.Data.Repositories
         }
 
         private async Task<bool> HasUserWithSameEmail(string email) => await _typedContext.AsNoTracking().AnyAsync(u => u.Email == email);
-
-        private async Task<bool> HasUserWithSameKey(string userKey) => await _typedContext.AsNoTracking().AnyAsync(u => u.Key == userKey);
+        private async Task<bool> HasUserWithSameDocument(string document) => await _typedContext.AsNoTracking().AnyAsync(u => u.Document == document);
     }
 }

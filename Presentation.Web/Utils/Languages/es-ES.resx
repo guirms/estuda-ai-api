@@ -570,4 +570,7 @@
   <data name="InvalidIp" xml:space="preserve">
     <value>IP inválida</value>
   </data>
+  <data name="UserSavedSuccessfully" xml:space="preserve">
+    <value>Usuario guardado exitosamente</value>
+  </data>
 </root>

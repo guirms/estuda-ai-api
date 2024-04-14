@@ -34,9 +34,10 @@ namespace Presentation.Web.Controllers
             {
                 userRequestValidator.Validate(userRequest);
 
-                await userService.Save(userRequest);
-
-                return StatusCode(StatusCodes.Status201Created);
+                return new ObjectResult(await userService.Save(userRequest))
+                {
+                    StatusCode = StatusCodes.Status201Created
+                };
             }
             catch (Exception ex)
             {

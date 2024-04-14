@@ -9,23 +9,11 @@ namespace Domain.Utils.Helpers
 {
     public static class HttpContextHelper
     {
-        private static JwtSecurityToken? CookieAuthToken { get; set; }
         private static JwtSecurityToken? HeaderAuthToken { get; set; }
 
         public static int GetUserId()
-            => CookieAuthToken?.GetClaimValue(Token.NameIdentifier)?.ToInt("InvalidAuthToken")
+            => HeaderAuthToken?.GetClaimValue(Token.NameIdentifier)?.ToInt("InvalidAuthToken")
                 ?? throw new InvalidOperationException("ErrorGettingSessionInfo");
-
-        public static string GetRequestIpv4(this IHttpContextAccessor contextAccessor) => contextAccessor?.HttpContext?.Connection?
-            .RemoteIpAddress?.ToString().ToValidIp() ?? throw new InvalidOperationException("ErrorGettingRequestIp");
-
-        public static void ValidatePermission()
-        {
-            if (GetUserId() != 0)
-                throw new InvalidOperationException("UserWithoutPermission");
-        }
-
-        public static string? GetClaimValueFromCookieToken(string key) => CookieAuthToken?.GetClaimValue(key);
 
         public static string? GetClaimValueFromHeaderToken(string key) => HeaderAuthToken?.GetClaimValue(key);
 
@@ -33,16 +21,15 @@ namespace Domain.Utils.Helpers
         {
             try
             {
-                if (CookieAuthToken?.GetClaimValue(Token.ClaimPassword) != HeaderAuthToken?.GetClaimValue(Token.ClaimPassword))
+                if (HeaderAuthToken?.GetClaimValue(Token.ClaimPassword) != Pwd.Auth)
                     return false;
 
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var validationParameters = GetValidationParameters();
 
-                tokenHandler.ValidateToken(CookieAuthToken?.RawData, validationParameters, out var validatedHttpOnlyAuthToken);
                 tokenHandler.ValidateToken(HeaderAuthToken?.RawData, validationParameters, out var validatedHeaderAuthToken);
 
-                return validatedHeaderAuthToken.ValidTo >= DateTime.UtcNow || validatedHttpOnlyAuthToken.ValidTo >= DateTime.UtcNow;
+                return validatedHeaderAuthToken.ValidTo >= DateTime.UtcNow;
             }
             catch
             {
@@ -52,7 +39,6 @@ namespace Domain.Utils.Helpers
 
         public static void SaveTokens(this IHttpContextAccessor contextAccessor)
         {
-            CookieAuthToken = contextAccessor.GetAuthTokenByCookie();
             HeaderAuthToken = contextAccessor.GetAuthTokenByHeader();
         }
 
@@ -79,21 +65,6 @@ namespace Domain.Utils.Helpers
                 ValidAudience = "Sample",
                 IssuerSigningKey = new SymmetricSecurityKey(key)
             };
-        }
-
-        private static JwtSecurityToken? GetAuthTokenByCookie(this IHttpContextAccessor contextAccessor)
-        {
-            try
-            {
-                var stringToken = contextAccessor.HttpContext!.Request.Cookies.FirstOrDefault(c => c.Key == Token.TokenKey).Value
-                    ?? throw new InvalidOperationException("ErrorGettingSessionInfo");
-
-                return new JwtSecurityTokenHandler().ReadJwtToken(stringToken);
-            }
-            catch
-            {
-                return null;
-            }
         }
 
         private static JwtSecurityToken? GetAuthTokenByHeader(this IHttpContextAccessor contextAccessor)

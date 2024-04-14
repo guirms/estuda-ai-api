@@ -2,13 +2,11 @@
 {
     public record LogInResponse
     {
-        public LogInResponse(DateTime? lastLogin, string sessionToken)
+        public LogInResponse(string token)
         {
-            LastLogin = lastLogin;
-            SessionToken = sessionToken;
+            Token = token;
         }
 
-        public DateTime? LastLogin { get; set; }
-        public string SessionToken { get; set; }
+        public string Token { get; set; }
     }
 }
