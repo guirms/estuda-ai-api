@@ -1,7 +1,6 @@
 ﻿using Domain.Objects.Enums.Language;
 using Domain.Utils.Helpers;
 using Domain.Utils.Languages;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Presentation.Web.Utils.Languages;
@@ -34,13 +33,7 @@ namespace Presentation.Web.Filters
                 throw new FileNotFoundException("An unexpected error occurred during screen translation");
             }
 
-            var isAllowAnonymous = context.ActionDescriptor.EndpointMetadata
-                                 .Any(e => e.GetType() == typeof(AllowAnonymousAttribute));
-
             contextAccessor.SaveTokens();
-
-            if (!isAllowAnonymous && !HttpContextHelper.IsValidAuthToken())
-                context.Result = Unauthorized();
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿using Domain.Utils.Constants;
-using Domain.Utils.Helpers;
+﻿using Domain.Utils.Helpers;
 using Domain.Utils.Languages;
 using Infra.CrossCutting.Security;
 using Infra.Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -87,8 +85,6 @@ builder.Services.AddAutoMapper(typeof(Application.AutoMapper.AutoMapper));
 
 var encryptionService = new EncryptionService();
 
-var plassonFarmKey = $"{Pwd.Pf.ToSafeValue()}_authSalt";
-
 #endregion
 
 #region Mysql Connection
@@ -102,36 +98,23 @@ builder.Services.AddDbContext<SqlContext>(opt => opt.UseMySql(
 
 #region JWT Authentication
 
-builder.Services.AddAuthorizationBuilder()
-    .AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
-    .RequireAuthenticatedUser().Build());
+var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();
+var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>().ToSafeValue();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddCookie(opt =>
-    {
-        opt.Cookie.Name = Token.TokenKey;
-    })
-    .AddJwtBearer(opt =>
-    {
-        opt.RequireHttpsMetadata = false;
-        opt.SaveToken = true;
-        opt.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes($"{plassonFarmKey}_token")),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
-        opt.Events = new JwtBearerEvents
-        {
-            OnMessageReceived = ctx =>
-            {
-                ctx.Token = ctx.Request.Cookies[Token.TokenKey];
-                return Task.CompletedTask;
-            }
-        };
-    });
+ .AddJwtBearer(options =>
+ {
+     options.TokenValidationParameters = new TokenValidationParameters
+     {
+         ValidateIssuer = true,
+         ValidateAudience = true,
+         ValidateLifetime = true,
+         ValidateIssuerSigningKey = true,
+         ValidIssuer = jwtIssuer,
+         ValidAudience = jwtIssuer,
+         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+     };
+ });
 
 #endregion
 

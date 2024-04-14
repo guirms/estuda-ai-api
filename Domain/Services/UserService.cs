@@ -4,10 +4,8 @@ using Domain.Interfaces.Services;
 using Domain.Models;
 using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
-using Domain.Utils.Constants;
 using Domain.Utils.Languages;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using System.Text;
 
 namespace Domain.Services
@@ -41,12 +39,7 @@ namespace Domain.Services
             if (user.Password != encryptedFullPassword)
                 throw new InvalidOperationException("InvalidUsernameOrPassword");
 
-            var claims = new List<Claim>
-            {
-                new(Token.ClaimPassword, Pwd.Auth)
-            };
-
-            var userToken = authService.GenerateToken(user.UserId, true, claims);
+            var userToken = authService.GenerateToken(user.UserId);
 
             if (userToken.IsNullOrEmpty())
                 throw new InvalidOperationException("ErrorLoggingIn");

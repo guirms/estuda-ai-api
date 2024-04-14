@@ -1,9 +1,7 @@
 ﻿using Domain.Utils.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
-using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Text;
 
 namespace Domain.Utils.Helpers
 {
@@ -16,27 +14,6 @@ namespace Domain.Utils.Helpers
                 ?? throw new InvalidOperationException("ErrorGettingSessionInfo");
 
         public static string? GetClaimValueFromHeaderToken(string key) => HeaderAuthToken?.GetClaimValue(key);
-
-        public static bool IsValidAuthToken()
-        {
-            try
-            {
-                if (HeaderAuthToken?.GetClaimValue(Token.ClaimPassword) != Pwd.Auth)
-                    return false;
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var validationParameters = GetValidationParameters();
-
-                tokenHandler.ValidateToken(HeaderAuthToken?.RawData, validationParameters, out var validatedHeaderAuthToken);
-
-                return validatedHeaderAuthToken.ValidTo >= DateTime.UtcNow;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public static void SaveTokens(this IHttpContextAccessor contextAccessor)
         {
             HeaderAuthToken = contextAccessor.GetAuthTokenByHeader();
@@ -50,21 +27,6 @@ namespace Domain.Utils.Helpers
             contextAccessor.HttpContext.Request.Headers.TryGetValue(key, out StringValues headerValue);
 
             return headerValue;
-        }
-
-        private static TokenValidationParameters GetValidationParameters()
-        {
-            var key = Encoding.ASCII.GetBytes($"{Pwd.Pf}_authSalt_token".ToSafeValue());
-
-            return new TokenValidationParameters()
-            {
-                ValidateLifetime = true,
-                ValidateAudience = false,
-                ValidateIssuer = false,
-                ValidIssuer = "Sample",
-                ValidAudience = "Sample",
-                IssuerSigningKey = new SymmetricSecurityKey(key)
-            };
         }
 
         private static JwtSecurityToken? GetAuthTokenByHeader(this IHttpContextAccessor contextAccessor)
