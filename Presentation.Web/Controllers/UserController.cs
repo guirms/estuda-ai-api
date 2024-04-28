@@ -59,5 +59,18 @@ namespace Presentation.Web.Controllers
                 return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorLoggingIn"));
             }
         }
+
+        [HttpGet("Test"), AllowAnonymous]
+        public IActionResult Test()
+        {
+            try
+            {
+                return Ok("Ok!");            
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
     }
 }

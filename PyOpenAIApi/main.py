@@ -7,22 +7,28 @@ client = OpenAI(
     api_key = f.read()
 )
 
-example_json = {
-  "ski_resorts": [
+example_json = '''{
+  "contents": [
     {
-      "name": "Les Portes du Soleil",
-      "slope_kilometers": 600
+      "name": String,
+      "difficulty": Number
     }
   ]
-}
+}'''
 
-prompt = "Provide valid JSON output. Provide the top 10 largest ski resorst in Europe. Rankin them on slope kilometers (descending) Provide one column 'name' and a column 'slope_kilometers' representing the total slope kilometers"
+prompt = '''Provide valid JSON output. 
+Provide a list of the main study contents for my college exam and their difficulty.
+Provide the number of contents based in the main theme of my exam and the number of days until the exam.
+Difficulty should be a number between 1 an 10, where 1 is very easy and 10 is very difficult.
+Provide a list called 'content' with the an object with the properties 'name' and 'difficult'.
+The main theme of my exam is: World war I and World war II.
+The number of days until the exam is: 7.'''
 
 chat_completion = client.chat.completions.create(
-    model="gpt-3.5-turbo-1106",
+    model="gpt-3.5-turbo-0125",
     response_format={"type":"json_object"},
     messages=[
-        {"role":"system","content":"Provide output in valid JSON. The data schema should be like this: "+json.dumps(example_json)},
+        {"role":"system","content":"Provide output in valid JSON. The data schema should follow this schema: "+json.dumps(example_json)},
         {"role":"user","content":prompt}
     ]
 )
@@ -31,10 +37,11 @@ finish_reason = chat_completion.choices[0].finish_reason
 
 if(finish_reason == "stop"):
     data = chat_completion.choices[0].message.content
-
-    ski_resorts = json.loads(data)
-
-    for ski_resort in ski_resorts['ski_resorts']:
-        print(ski_resort['name']+" : "+str(ski_resort['slope_kilometers'])+"km")
+    contents = json.loads(data)['contents']
+    
+    print(f"Contents length: {len(contents)}\n")
+    
+    for content in contents:
+        print("Name: " + content['name'] + ", Difficulty: " + str(content['difficulty']))
 else :
     print("Error! provide more tokens please")
