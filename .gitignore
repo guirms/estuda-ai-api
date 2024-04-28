@@ -455,4 +455,6 @@ FodyWeavers.xsd
 # Windows shortcuts
 *.lnk
 
-
+# Py keys
+/PyOpenAIAPi/*.txt
+api_key.txt
