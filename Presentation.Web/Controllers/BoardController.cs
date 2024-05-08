@@ -1,5 +1,4 @@
 using Domain.Interfaces.Services;
-using Domain.Objects.Requests.Board;
 using Domain.Objects.Requests.User;
 using Domain.Utils.Languages;
 using FluentValidation;
@@ -35,10 +34,9 @@ namespace Presentation.Web.Controllers
             {
                 boardRequestValidator.Validate(boardRequest);
 
-                return new ObjectResult(await boardService.Save(boardRequest))
-                {
-                    StatusCode = StatusCodes.Status201Created
-                };
+                await boardService.Save(boardRequest);
+
+                return Created();
             }
             catch (Exception ex)
             {

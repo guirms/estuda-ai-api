@@ -3,18 +3,25 @@ using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Models;
 using Domain.Objects.Requests.User;
-using Domain.Objects.Responses.Asset;
-using Domain.Utils.Languages;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Domain.Utils.Helpers;
 
 namespace Domain.Services
 {
-    public class BoardService() : IBoardService
+    public class BoardService(IMapper mapper, IBoardRepository boardRepository) : IBoardService
     {
-        public Task<string> Save(BoardRequest boardRequest)
+        public async Task Save(BoardRequest boardRequest)
         {
-            throw new NotImplementedException();
+            var userId = HttpContextHelper.GetUserId();
+
+            if (await boardRepository.HasBoardWithSameNameAndUserId(boardRequest.Name, userId))
+                throw new InvalidOperationException("Board com o mesmo nome já cadastrado");
+
+            var board = mapper.Map<Board>(boardRequest);
+
+            board.UserId = userId;
+            board.InsertedAt = DateTime.Now;
+
+            await boardRepository.Save(board);
         }
     }
 }

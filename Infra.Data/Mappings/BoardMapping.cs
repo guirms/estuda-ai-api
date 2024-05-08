@@ -8,7 +8,8 @@ namespace Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Board> builder)
         {
-            builder.ToTable("Boards");
+            builder.ToTable("Boards")
+                .HasIndex(b => b.Name);
 
             builder.HasKey(b => b.BoardId);
 

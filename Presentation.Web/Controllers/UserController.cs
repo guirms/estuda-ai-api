@@ -65,7 +65,7 @@ namespace Presentation.Web.Controllers
         {
             try
             {
-                return Ok("Ok!");            
+                return Ok("Ok!");
             }
             catch (Exception ex)
             {
