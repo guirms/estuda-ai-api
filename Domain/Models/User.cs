@@ -11,6 +11,8 @@ namespace Domain.Models
         public required string Password { get; set; }
         public required string Salt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+
+        public virtual IEnumerable<Board>? Boards { get; set; }
     }
 }
 

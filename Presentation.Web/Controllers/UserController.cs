@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace Presentation.Web.Controllers
 {
     [ApiController, Authorize, Route("User")]
-    public class UserControllerController(IUserService userService, IValidator<LogInRequest> logInRequestValidator, IValidator<UserRequest> userRequestValidator) : ControllerBase
+    public class UserController(IUserService userService, IValidator<LogInRequest> logInRequestValidator, IValidator<UserRequest> userRequestValidator) : ControllerBase
     {
         [HttpGet("Get/{currentPage}")]
         public async Task<IActionResult> Get(int currentPage, string? userName)

@@ -40,6 +40,10 @@ namespace Infra.Data.Mappings
             builder.Property(u => u.UpdatedAt)
                 .HasColumnType("datetime(0)")
                 .IsRequired(false);
+
+            builder.HasMany(u => u.Boards)
+                .WithOne(b => b.User)
+                .IsRequired(false);
         }
     }
 }
