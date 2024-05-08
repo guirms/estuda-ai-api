@@ -3,7 +3,6 @@ using Domain.Objects.Requests.User;
 using Domain.Utils.Languages;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -12,21 +11,21 @@ namespace Presentation.Web.Controllers
     [ApiController, Authorize, Route("Board")]
     public class BoardController(IBoardService boardService, IValidator<SaveBoardRequest> saveBoardRequestValidator, IValidator<UpdateBoardRequest> updateBoardRequestValidator) : ControllerBase
     {
-        //[HttpGet("Get/{currentPage}")]
-        //public async Task<IActionResult> Get(int currentPage, string? boardName)
-        //{
-        //    try
-        //    {
-        //        if (currentPage < 1)
-        //            throw new InvalidOperationException("InvalidPage");
+        [HttpGet("Get/{currentPage}")]
+        public async Task<IActionResult> Get(int currentPage, string? boardName)
+        {
+            try
+            {
+                if (currentPage < 1)
+                    throw new InvalidOperationException("InvalidPage");
 
-        //        return Ok(await boardService.Get(currentPage, boardName));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("BoardNotFound"));
-        //    }
-        //}
+                return Ok(await boardService.Get(currentPage, boardName));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("BoardNotFound"));
+            }
+        }
 
         [HttpPost("Save")]
         public async Task<IActionResult> Save(SaveBoardRequest saveBoardRequest)
@@ -37,7 +36,7 @@ namespace Presentation.Web.Controllers
 
                 await boardService.Save(saveBoardRequest);
 
-                return Created();
+                return StatusCode(StatusCodes.Status201Created);
             }
             catch (Exception ex)
             {
@@ -55,6 +54,21 @@ namespace Presentation.Web.Controllers
                 await boardService.Update(updateBoardRequest);
 
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorSaving"));
+            }
+        }
+
+        [HttpDelete("Delete/{boardId}")]
+        public async Task<IActionResult> Delete(int boardId)
+        {
+            try
+            {
+                await boardService.Delete(boardId);
+
+                return NoContent();
             }
             catch (Exception ex)
             {

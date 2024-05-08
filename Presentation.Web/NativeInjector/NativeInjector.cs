@@ -25,12 +25,14 @@ namespace Presentation.Web.NativeInjector
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IBoardService, BoardService>();
 
             #endregion
 
             #region Repositories
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBoardRepository, BoardRepository>();
 
             #endregion
 
@@ -38,6 +40,8 @@ namespace Presentation.Web.NativeInjector
 
             services.AddTransient<IValidator<UserRequest>, UserRequestValidator>();
             services.AddTransient<IValidator<LogInRequest>, LogInRequestValidator>();
+            services.AddTransient<IValidator<SaveBoardRequest>, SaveBoardRequestValidator>();
+            services.AddTransient<IValidator<UpdateBoardRequest>, UpdateBoardRequestValidator>();
 
             #endregion
 

@@ -7,7 +7,7 @@ namespace Domain.Objects.Requests.User
     {
         public required string Name { get; set; }
         public required DateTime ExamDateTime { get; set; }
-        public required TimeSpan DailyStudyTime { get; set; }
+        public required string DailyStudyTime { get; set; }
     }
 
     public class SaveBoardRequestValidator : AbstractValidator<SaveBoardRequest>
@@ -26,7 +26,7 @@ namespace Domain.Objects.Requests.User
             if (saveBoardRequest.ExamDateTime < DateTime.Now)
                 throw new ValidationException("Data de exame não pode ser menor que a data atual");
 
-            if (saveBoardRequest.DailyStudyTime.TotalSeconds <= 0)
+            if (TimeSpan.Parse(saveBoardRequest.DailyStudyTime).TotalSeconds <= 0)
                 throw new ValidationException("Tempo de estudo não pode ser menor do que zero");
 
             return true;

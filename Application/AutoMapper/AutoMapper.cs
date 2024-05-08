@@ -11,6 +11,7 @@ namespace Application.AutoMapper
         public AutoMapper()
         {
             UserMap();
+            BoardMap();
         }
 
         #region User
@@ -22,6 +23,21 @@ namespace Application.AutoMapper
 
             CreateMap<User, UserResultsResponse>()
                .ForMember(u => u.Document, opts => opts.MapFrom(u => u.Document.ToDocument()));
+        }
+
+        #endregion
+
+        #region Board
+
+        private void BoardMap()
+        {
+            CreateMap<SaveBoardRequest, Board>()
+               .ForMember(b => b.DailyStudyTime, opts => opts.MapFrom(s => TimeSpan.Parse(s.DailyStudyTime)))
+               .ForMember(b => b.InsertedAt, opts => opts.MapFrom(s => DateTime.Now));
+
+            CreateMap<UpdateBoardRequest, Board>();
+
+            CreateMap<Board, BoardResultsResponse>();
         }
 
         #endregion

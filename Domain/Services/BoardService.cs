@@ -3,12 +3,18 @@ using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Models;
 using Domain.Objects.Requests.User;
+using Domain.Objects.Responses.Asset;
 using Domain.Utils.Helpers;
 
 namespace Domain.Services
 {
     public class BoardService(IMapper mapper, IBoardRepository boardRepository) : IBoardService
     {
+        public async Task Delete(int boardId) => await boardRepository.Delete(boardId);
+
+        public async Task<IEnumerable<BoardResultsResponse>?> Get(int currentPage, string? userName) =>
+             await boardRepository.GetBoardResults(currentPage, userName);
+
         public async Task Save(SaveBoardRequest saveBoardRequest)
         {
             var userId = HttpContextHelper.GetUserId();
@@ -19,7 +25,6 @@ namespace Domain.Services
             var board = mapper.Map<Board>(saveBoardRequest);
 
             board.UserId = userId;
-            board.InsertedAt = DateTime.Now;
 
             await boardRepository.Save(board);
         }

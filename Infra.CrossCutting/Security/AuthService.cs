@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces.Services;
+using Domain.Utils.Constants;
 using Domain.Utils.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ namespace Infra.CrossCutting.Security
 
             var claims = new Claim[]
             {
-                new(ClaimTypes.NameIdentifier, claimId.ToString())
+                new(Token.NameIdentifier, claimId.ToString())
             };
 
             var securityToken = new JwtSecurityToken(

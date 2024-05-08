@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Routing.Constraints;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Domain.Objects.Requests.User
 {
