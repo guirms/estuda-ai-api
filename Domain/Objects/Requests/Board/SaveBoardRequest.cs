@@ -3,30 +3,30 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Domain.Objects.Requests.User
 {
-    public record BoardRequest
+    public record SaveBoardRequest
     {
         public required string Name { get; set; }
         public required DateTime ExamDateTime { get; set; }
         public required TimeSpan DailyStudyTime { get; set; }
     }
 
-    public class BoardRequestValidator : AbstractValidator<BoardRequest>
+    public class SaveBoardRequestValidator : AbstractValidator<SaveBoardRequest>
     {
-        public BoardRequestValidator()
+        public SaveBoardRequestValidator()
         {
             RuleFor(u => u)
                 .Must(HaveValidFields);
         }
 
-        private static bool HaveValidFields(BoardRequest boardRequest)
+        private static bool HaveValidFields(SaveBoardRequest saveBoardRequest)
         {
-            if (boardRequest.Name.IsNullOrEmpty() || boardRequest.Name.Length > 50)
+            if (saveBoardRequest.Name.IsNullOrEmpty() || saveBoardRequest.Name.Length > 50)
                 throw new ValidationException("InvalidName");
 
-            if (boardRequest.ExamDateTime < DateTime.Now)
+            if (saveBoardRequest.ExamDateTime < DateTime.Now)
                 throw new ValidationException("Data de exame não pode ser menor que a data atual");
 
-            if (boardRequest.DailyStudyTime.TotalSeconds <= 0)
+            if (saveBoardRequest.DailyStudyTime.TotalSeconds <= 0)
                 throw new ValidationException("Tempo de estudo não pode ser menor do que zero");
 
             return true;

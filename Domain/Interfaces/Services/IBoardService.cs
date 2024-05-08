@@ -4,6 +4,7 @@ namespace Domain.Interfaces.Services
 {
     public interface IBoardService
     {
-        Task Save(BoardRequest boardRequest);
+        Task Save(SaveBoardRequest saveBoardRequest);
+        Task Update(UpdateBoardRequest updateBoardRequest);
     }
 }
