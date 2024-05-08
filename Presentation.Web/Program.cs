@@ -185,11 +185,11 @@ await configContext.Database.EnsureCreatedAsync();
 
 #region Swagger
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 #endregion
 
