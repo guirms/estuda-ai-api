@@ -65,21 +65,21 @@ namespace Domain.Services
                 [
                     new() {
                         CardId = 2,
-                    Name = "Seguunda guerra mundial",
-                    Description = "Principais causas e consequências do conflito",
-                    Order = 0,
-                    StudyTime = "0d 4h 0min"
+                        Name = "Seguunda guerra mundial",
+                        Description = "Principais causas e consequências do conflito",
+                        Order = 0,
+                        StudyTime = "0d 4h 0min"
                     }
                 ],
 
                 Done =
                 [
                     new() {
-                         CardId = 3,
-                    Name = "Guerra fria",
-                    Description = "Impactos da guerra fria na vida dos civis e militares",
-                    Order = 0,
-                    StudyTime = "0d 1h 45min"
+                        CardId = 3,
+                        Name = "Guerra fria",
+                        Description = "Impactos da guerra fria na vida dos civis e militares",
+                        Order = 0,
+                        StudyTime = "0d 1h 45min"
                     }
                 ]
             };
