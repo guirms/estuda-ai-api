@@ -4,6 +4,7 @@ using Domain.Interfaces.Services;
 using Domain.Models;
 using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
+using Domain.Objects.Responses.Board;
 using Domain.Utils.Helpers;
 
 namespace Domain.Services
@@ -44,6 +45,46 @@ namespace Domain.Services
             board.UpdatedAt = DateTime.Now;
 
             await boardRepository.Update(board);
+        }
+
+        public async Task<CardResultsResponse?> GetCards(int boardId)
+        {
+            var response = new CardResultsResponse
+            {
+                ToDo =
+                [
+                    new() {
+                        CardId = 1,
+                        Name = "Primeira guerra mundial",
+                        Description = "Principais causas e consequências do conflito",
+                        Order = 0,
+                        StudyTime = "0d 3h 30min"
+                    }
+                ],
+                Doing =
+                [
+                    new() {
+                        CardId = 2,
+                    Name = "Seguunda guerra mundial",
+                    Description = "Principais causas e consequências do conflito",
+                    Order = 0,
+                    StudyTime = "0d 4h 0min"
+                    }
+                ],
+
+                Done =
+                [
+                    new() {
+                         CardId = 3,
+                    Name = "Guerra fria",
+                    Description = "Impactos da guerra fria na vida dos civis e militares",
+                    Order = 0,
+                    StudyTime = "0d 1h 45min"
+                    }
+                ]
+            };
+
+            return await Task.FromResult(response);
         }
     }
 }

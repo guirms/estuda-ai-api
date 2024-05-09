@@ -187,8 +187,8 @@ await configContext.Database.EnsureCreatedAsync();
 
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 //}
 
 #endregion

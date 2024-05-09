@@ -75,5 +75,18 @@ namespace Presentation.Web.Controllers
                 return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorSaving"));
             }
         }
+
+        [HttpGet("GetCards/{boardId}")]
+        public async Task<IActionResult> GetCards(int boardId)
+        {
+            try
+            {
+                return Ok(await boardService.GetCards(boardId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("BoardNotFound"));
+            }
+        }
     }
 }
