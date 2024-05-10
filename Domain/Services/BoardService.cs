@@ -7,13 +7,12 @@ using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
 using Domain.Objects.Responses.Board;
 using Domain.Utils.Helpers;
-using Microsoft.AspNetCore.Http;
 
 namespace Domain.Services
 {
     public class BoardService(IMapper mapper, IBoardRepository boardRepository, ICardRepository cardRepository) : IBoardService
     {
-        public async Task Delete(int boardId) => await boardRepository.Delete(boardId);
+        public async Task Delete(int boardId) => await boardRepository.DeleteByUserId(boardId, HttpContextHelper.GetUserId());
 
         public async Task<IEnumerable<BoardResultsResponse>?> Get(int currentPage, string? userName) =>
              await boardRepository.GetBoardResults(HttpContextHelper.GetUserId(), currentPage, userName);
@@ -59,16 +58,32 @@ namespace Domain.Services
             return result;
         }
 
-        public async Task UpdateCardStatus(UpdateCardStatusRequest updateCardStatusRequest)
+        public async Task UpdateCardStatus(UpdateCardStatusRequest[] updateCardStatusRequest)
         {
-            var card = await cardRepository.GetByIdAndUserId(updateCardStatusRequest.CardId, HttpContextHelper.GetUserId())
-                ?? throw new InvalidOperationException("Card não encontrado");
+            var cardIds = updateCardStatusRequest.Select(c => c.CardId);
 
-            if (card.TaskStatus == updateCardStatusRequest.NewCardStatus)
-                return;
+            var cards = await cardRepository.GetByIdAndUserId(cardIds, HttpContextHelper.GetUserId());
 
-            card.TaskStatus = updateCardStatusRequest.NewCardStatus;
-            await cardRepository.Update(card);
+            if (cards == null || !cards.Any())
+                throw new InvalidOperationException("Cards não encontrados");
+
+            var currentDateTime = DateTime.Now;
+
+            foreach (var card in cards)
+            {
+                foreach (var cardId in cardIds)
+                {
+                    if (card.CardId == cardId)
+                    {
+                        var newStatus = updateCardStatusRequest.First(c => c.CardId == cardId).NewCardStatus;
+
+                        card.TaskStatus = newStatus;
+                        card.UpdatedAt = currentDateTime;
+                    }
+                }
+            }
+
+            await cardRepository.UpdateMany(cards);
         }
     }
 }

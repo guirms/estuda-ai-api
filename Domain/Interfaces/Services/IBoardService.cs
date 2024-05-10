@@ -12,6 +12,6 @@ namespace Domain.Interfaces.Services
         Task Save(SaveBoardRequest saveBoardRequest);
         Task Update(UpdateBoardRequest updateBoardRequest);
         Task<IEnumerable<CardResultsResponse>?> GetCards(int boardId);
-        Task UpdateCardStatus(UpdateCardStatusRequest updateCardStatusRequest);
+        Task UpdateCardStatus(UpdateCardStatusRequest[] updateCardStatusRequest);
     }
 }

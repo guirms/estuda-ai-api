@@ -92,7 +92,7 @@ namespace Presentation.Web.Controllers
 
 
         [HttpPatch("UpdateCardStatus")]
-        public async Task<IActionResult> UpdateCardStatus(UpdateCardStatusRequest updateCardStatusRequest)
+        public async Task<IActionResult> UpdateCardStatus(UpdateCardStatusRequest[] updateCardStatusRequest)
         {
             try
             {

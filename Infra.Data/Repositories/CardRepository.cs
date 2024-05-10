@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Interfaces.Repositories;
 using Domain.Models;
-using Domain.Objects.Responses.Asset;
 using Domain.Objects.Responses.Board;
 using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +9,8 @@ namespace Infra.Data.Repositories
 {
     public class CardRepository(SqlContext context, IMapper mapper) : BaseSqlRepository<Card>(context), ICardRepository
     {
-        public async Task<Card?> GetByIdAndUserId(int cardId, int userId) =>
-            await _typedContext.Include(c => c.Board).FirstOrDefaultAsync(c => c.CardId == cardId && c.Board.UserId == userId);
+        public async Task<IEnumerable<Card>?> GetByIdAndUserId(IEnumerable<int> cardId, int userId) =>
+            await _typedContext.Include(c => c.Board).Where(c => cardId.Contains(c.CardId) && c.Board.UserId == userId).ToListAsync();
 
         public async Task<IEnumerable<CardResultsResponse>?> GetCardResultsByBoardId(int boardId, int currentPage, string? cardName, int takeQuantity = 10)
         {

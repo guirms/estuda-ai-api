@@ -9,6 +9,16 @@ namespace Infra.Data.Repositories
 {
     public class BoardRepository(SqlContext context, IMapper mapper) : BaseSqlRepository<Board>(context), IBoardRepository
     {
+        public async Task DeleteByUserId(int boardId, int userId)
+        {
+            var board = await GetByIdAndUserId(boardId, userId)
+                ?? throw new InvalidOperationException("Board não encontrado");
+
+            _typedContext.Remove(board);
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<BoardResultsResponse>?> GetBoardResults(int userId, int currentPage, string? boardName, int takeQuantity = 10)
         {
             var query = _typedContext

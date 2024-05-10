@@ -8,7 +8,7 @@ namespace Infra.Data.Repositories
     public class BaseSqlRepository<T> : IDisposable, IBaseSqlRepository<T> where T : class
     {
         protected readonly DbSet<T> _typedContext;
-        private readonly SqlContext _context;
+        protected readonly SqlContext _context;
         private IDbContextTransaction? _transaction;
 
         protected BaseSqlRepository(SqlContext context)

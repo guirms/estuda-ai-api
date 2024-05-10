@@ -34,7 +34,7 @@ builder.Services.AddMvc(opts =>
 
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Plasson Farm", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Cago o zolho", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
