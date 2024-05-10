@@ -26,6 +26,7 @@ namespace Presentation.Web.NativeInjector
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IBoardService, BoardService>();
+            services.AddScoped<ICardService, CardService>();
 
             #endregion
 

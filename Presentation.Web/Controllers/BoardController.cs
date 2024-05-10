@@ -1,5 +1,4 @@
 using Domain.Interfaces.Services;
-using Domain.Objects.Requests.Card;
 using Domain.Objects.Requests.User;
 using Domain.Utils.Languages;
 using FluentValidation;
@@ -70,35 +69,6 @@ namespace Presentation.Web.Controllers
                 await boardService.Delete(boardId);
 
                 return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorSaving"));
-            }
-        }
-
-        [HttpGet("GetCards/{boardId}")]
-        public async Task<IActionResult> GetCards(int boardId)
-        {
-            try
-            {
-                return Ok(await boardService.GetCards(boardId));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("BoardNotFound"));
-            }
-        }
-
-
-        [HttpPatch("UpdateCardStatus")]
-        public async Task<IActionResult> UpdateCardStatus(UpdateCardStatusRequest[] updateCardStatusRequest)
-        {
-            try
-            {
-                await boardService.UpdateCardStatus(updateCardStatusRequest);
-
-                return Ok();
             }
             catch (Exception ex)
             {
