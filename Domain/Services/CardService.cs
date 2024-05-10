@@ -8,14 +8,33 @@ namespace Domain.Services
 {
     public class CardService(ICardRepository cardRepository) : ICardService
     {
-        public async Task<IEnumerable<CardResultsResponse>?> Get(int boardId)
+        public async Task<IEnumerable<GetCardsResponse>?> Get(int boardId)
         {
             var result = await cardRepository.GetCardResultsByBoardId(boardId, 1, null);
 
             if (result == null || !result.Any())
                 throw new InvalidOperationException("Nenhum card encontrado");
 
-            return result;
+
+            var todoList = result.Where(r => r.TaskStatus == Models.Enums.Task.ECardStatus.ToDo);
+            var doingList = result.Where(r => r.TaskStatus == Models.Enums.Task.ECardStatus.Doing);
+            var doneList = result.Where(r => r.TaskStatus == Models.Enums.Task.ECardStatus.Done);
+
+            return new List<GetCardsResponse>()
+            {
+                new() {
+                    TaskStatus = Models.Enums.Task.ECardStatus.ToDo,
+                    Card = todoList
+                },
+                new() {
+                    TaskStatus = Models.Enums.Task.ECardStatus.Doing,
+                    Card = doingList
+                },
+                new() {
+                    TaskStatus = Models.Enums.Task.ECardStatus.Done,
+                    Card = doneList
+                }
+            };
         }
 
         public async Task UpdateStatus(UpdateCardStatusRequest[] updateCardStatusRequest)

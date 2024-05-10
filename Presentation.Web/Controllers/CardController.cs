@@ -10,12 +10,12 @@ namespace Presentation.Web.Controllers
     [ApiController, Authorize, Route("Card")]
     public class CardController(ICardService cardService) : ControllerBase
     {
-        [HttpGet("Get/{cardId}")]
-        public async Task<IActionResult> Get(int cardId)
+        [HttpGet("Get/{boardId}")]
+        public async Task<IActionResult> Get(int boardId)
         {
             try
             {
-                return Ok(await cardService.Get(cardId));
+                return Ok(await cardService.Get(boardId));
             }
             catch (Exception ex)
             {
