@@ -2,6 +2,7 @@
 using Domain.Models;
 using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
+using Domain.Objects.Responses.Board;
 using Domain.Utils.Helpers;
 
 namespace Application.AutoMapper
@@ -12,6 +13,7 @@ namespace Application.AutoMapper
         {
             UserMap();
             BoardMap();
+            CardMap();
         }
 
         #region User
@@ -38,6 +40,15 @@ namespace Application.AutoMapper
             CreateMap<UpdateBoardRequest, Board>();
 
             CreateMap<Board, BoardResultsResponse>();
+        }
+
+        #endregion
+
+        #region Card
+
+        private void CardMap()
+        {
+            CreateMap<Card, CardResultsResponse>();
         }
 
         #endregion

@@ -2,19 +2,21 @@
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Models;
+using Domain.Objects.Requests.Card;
 using Domain.Objects.Requests.User;
 using Domain.Objects.Responses.Asset;
 using Domain.Objects.Responses.Board;
 using Domain.Utils.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace Domain.Services
 {
-    public class BoardService(IMapper mapper, IBoardRepository boardRepository) : IBoardService
+    public class BoardService(IMapper mapper, IBoardRepository boardRepository, ICardRepository cardRepository) : IBoardService
     {
         public async Task Delete(int boardId) => await boardRepository.Delete(boardId);
 
         public async Task<IEnumerable<BoardResultsResponse>?> Get(int currentPage, string? userName) =>
-             await boardRepository.GetBoardResults(currentPage, userName);
+             await boardRepository.GetBoardResults(HttpContextHelper.GetUserId(), currentPage, userName);
 
         public async Task Save(SaveBoardRequest saveBoardRequest)
         {
@@ -47,44 +49,26 @@ namespace Domain.Services
             await boardRepository.Update(board);
         }
 
-        public async Task<CardResultsResponse?> GetCards(int boardId)
+        public async Task<IEnumerable<CardResultsResponse>?> GetCards(int boardId)
         {
-            var response = new CardResultsResponse
-            {
-                ToDo =
-                [
-                    new() {
-                        CardId = 1,
-                        Name = "Primeira guerra mundial",
-                        Description = "Principais causas e consequências do conflito",
-                        Order = 0,
-                        StudyTime = "0d 3h 30min"
-                    }
-                ],
-                Doing =
-                [
-                    new() {
-                        CardId = 2,
-                        Name = "Seguunda guerra mundial",
-                        Description = "Principais causas e consequências do conflito",
-                        Order = 0,
-                        StudyTime = "0d 4h 0min"
-                    }
-                ],
+            var result = await cardRepository.GetCardResultsByBoardId(boardId, 1, null);
 
-                Done =
-                [
-                    new() {
-                        CardId = 3,
-                        Name = "Guerra fria",
-                        Description = "Impactos da guerra fria na vida dos civis e militares",
-                        Order = 0,
-                        StudyTime = "0d 1h 45min"
-                    }
-                ]
-            };
+            if (result == null || !result.Any())
+                throw new InvalidOperationException("Nenhum card encontrado");
 
-            return await Task.FromResult(response);
+            return result;
+        }
+
+        public async Task UpdateCardStatus(UpdateCardStatusRequest updateCardStatusRequest)
+        {
+            var card = await cardRepository.GetByIdAndUserId(updateCardStatusRequest.CardId, HttpContextHelper.GetUserId())
+                ?? throw new InvalidOperationException("Card não encontrado");
+
+            if (card.TaskStatus == updateCardStatusRequest.NewCardStatus)
+                return;
+
+            card.TaskStatus = updateCardStatusRequest.NewCardStatus;
+            await cardRepository.Update(card);
         }
     }
 }

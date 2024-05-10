@@ -9,10 +9,11 @@ namespace Infra.Data.Repositories
 {
     public class BoardRepository(SqlContext context, IMapper mapper) : BaseSqlRepository<Board>(context), IBoardRepository
     {
-        public async Task<IEnumerable<BoardResultsResponse>?> GetBoardResults(int currentPage, string? boardName, int takeQuantity = 10)
+        public async Task<IEnumerable<BoardResultsResponse>?> GetBoardResults(int userId, int currentPage, string? boardName, int takeQuantity = 10)
         {
             var query = _typedContext
                     .AsNoTracking()
+                    .Where(b => b.UserId == userId)
                     .OrderByDescending(b => b.BoardId)
                     .Skip((currentPage - 1) * takeQuantity)
                     .Take(takeQuantity);

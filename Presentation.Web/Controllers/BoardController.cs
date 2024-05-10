@@ -1,4 +1,5 @@
 using Domain.Interfaces.Services;
+using Domain.Objects.Requests.Card;
 using Domain.Objects.Requests.User;
 using Domain.Utils.Languages;
 using FluentValidation;
@@ -86,6 +87,22 @@ namespace Presentation.Web.Controllers
             catch (Exception ex)
             {
                 return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("BoardNotFound"));
+            }
+        }
+
+
+        [HttpPatch("UpdateCardStatus")]
+        public async Task<IActionResult> UpdateCardStatus(UpdateCardStatusRequest updateCardStatusRequest)
+        {
+            try
+            {
+                await boardService.UpdateCardStatus(updateCardStatusRequest);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorSaving"));
             }
         }
     }

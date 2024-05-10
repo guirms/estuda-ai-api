@@ -33,6 +33,7 @@ namespace Presentation.Web.NativeInjector
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBoardRepository, BoardRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
 
             #endregion
 

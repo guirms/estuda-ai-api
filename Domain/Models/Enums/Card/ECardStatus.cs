@@ -1,6 +1,6 @@
 ﻿namespace Domain.Models.Enums.Task
 {
-    public enum ETaskStatus
+    public enum ECardStatus
     {
         ToDo = 0,
         Doing = 1,

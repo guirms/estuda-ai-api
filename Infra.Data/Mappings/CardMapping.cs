@@ -11,7 +11,7 @@ namespace Infra.Data.Mappings
             builder.ToTable("Cards")
                   .HasIndex(c => c.Order);
 
-            builder.HasKey(c => c.BoardId);
+            builder.HasKey(c => c.CardId);
 
             builder.Property(c => c.Name)
                 .HasMaxLength(50)
