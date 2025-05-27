@@ -2,6 +2,14 @@
 
 Todas as mudanças significativas deste projeto estão documentadas aqui.
 
+## [1.6.0] - 2025-05-27
+### Alterado
+- `CardService` refatorada:
+  - Lógica de `UpdateStatus` simplificada com uso de `Dictionary` e eliminação de loop aninhado.
+  - Criação de métodos auxiliares `AgruparCardsPorStatus` e `AtualizarStatusDosCards`.
+  - Melhor clareza semântica e eliminação de duplicações.
+
+
 ## [1.5.0] - 2025-05-27
 ### Alterado
 - `UserService` refatorada:
