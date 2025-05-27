@@ -11,32 +11,37 @@ namespace Presentation.Web.Controllers
     public class CardController(ICardService cardService) : ControllerBase
     {
         [HttpGet("Get/{boardId}")]
-        public async Task<IActionResult> Get(int boardId)
+        public async Task<IActionResult> GetCardsByBoard(int boardId)
         {
             try
             {
-                return Ok(await cardService.Get(boardId));
+                var cards = await cardService.Get(boardId);
+                return Ok(cards);
             }
             catch (Exception ex)
             {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("Erro buscando cards"));
+                return HandleException(ex, "Erro buscando cards");
             }
         }
 
-
         [HttpPatch("UpdateStatus")]
-        public async Task<IActionResult> UpdateStatus(UpdateCardStatusRequest[] updateCardStatusRequest)
+        public async Task<IActionResult> UpdateCardStatuses(UpdateCardStatusRequest[] updateCardStatusRequest)
         {
             try
             {
                 await cardService.UpdateStatus(updateCardStatusRequest);
-
-                return Ok();
+                return Ok("Status atualizado com sucesso");
             }
             catch (Exception ex)
             {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("Erro ao atualizar status"));
+                return HandleException(ex, "Erro ao atualizar status");
             }
+        }
+
+        private IActionResult HandleException(Exception ex, string defaultMessage)
+        {
+            var message = !ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate(defaultMessage);
+            return BadRequest(message);
         }
     }
 }

@@ -2,6 +2,19 @@
 
 Todas as mudanças significativas deste projeto estão documentadas aqui.
 
+## [1.2.0] - 2025-05-27
+### Alterado
+- `CardController` refatorada:
+  - Método `Get` renomeado para `GetCardsByBoard` para melhor clareza semântica.
+  - Método `UpdateStatus` renomeado para `UpdateCardStatuses`.
+  - Extraído método `HandleException` para centralizar tratamento de erros.
+  - Mensagem de sucesso adicionada no endpoint de atualização de status.
+
+### Melhorado
+- Redução de duplicação de código com extração de lógica comum.
+- Respostas HTTP mais claras e consistentes.
+
+
 ## [1.1.0] - 2025-05-27
 ### Adicionado
 - Novo método privado `HandleException` para centralizar o tratamento de erros.
