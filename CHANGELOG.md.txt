@@ -2,6 +2,14 @@
 
 Todas as mudanças significativas deste projeto estão documentadas aqui.
 
+## [1.3.0] - 2025-05-27
+### Alterado
+- `BoardController` refatorada:
+  - Renomeação de métodos para maior clareza (`GetBoards`, `SaveBoard`, `UpdateBoard`, `DeleteBoard`).
+  - Extração de métodos `HandleException` e `ValidateRequest`.
+  - Melhor tratamento de erros com mensagens traduzidas.
+
+
 ## [1.2.0] - 2025-05-27
 ### Alterado
 - `CardController` refatorada:
