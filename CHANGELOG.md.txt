@@ -2,6 +2,14 @@
 
 Todas as mudanças significativas deste projeto estão documentadas aqui.
 
+## [1.7.0] - 2025-05-27
+### Alterado
+- `BoardService` refatorada:
+  - Redução de chamadas duplicadas a `HttpContextHelper.GetUserId()`.
+  - Criação do método auxiliar `NomeDuplicado` para verificação de nome.
+  - Melhor legibilidade e nomes de parâmetros mais expressivos.
+
+
 ## [1.6.0] - 2025-05-27
 ### Alterado
 - `CardService` refatorada:
