@@ -2,6 +2,14 @@
 
 Todas as mudanças significativas deste projeto estão documentadas aqui.
 
+## [1.5.0] - 2025-05-27
+### Alterado
+- `UserService` refatorada:
+  - Extração da lógica de encriptação para `SetEncryptedPassword`.
+  - Validação de password extraída para `IsPasswordValid`.
+  - Métodos internos organizados e renomeados para maior clareza.
+
+
 ## [1.3.0] - 2025-05-27
 ### Alterado
 - `BoardController` refatorada:
