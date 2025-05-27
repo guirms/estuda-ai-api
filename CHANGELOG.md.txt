@@ -1,0 +1,12 @@
+# Changelog
+
+Todas as mudanças significativas deste projeto estão documentadas aqui.
+
+## [1.1.0] - 2025-05-27
+### Adicionado
+- Novo método privado `HandleException` para centralizar o tratamento de erros.
+- Validação com mensagens claras utilizando FluentValidation.
+
+### Alterado
+- Nome do método `Save` alterado para `RegisterUser` por clareza semântica.
+- Código duplicado nos blocos try/catch foi eliminado.

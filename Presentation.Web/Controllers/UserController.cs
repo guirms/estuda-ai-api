@@ -2,6 +2,7 @@ using Domain.Interfaces.Services;
 using Domain.Objects.Requests.User;
 using Domain.Utils.Languages;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -19,29 +20,27 @@ namespace Presentation.Web.Controllers
                 if (currentPage < 1)
                     throw new InvalidOperationException("InvalidPage");
 
-                return Ok(await userService.Get(currentPage, userName));
+                var result = await userService.Get(currentPage, userName);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("UserNotFound"));
+                return HandleException(ex, "UserNotFound");
             }
         }
 
         [HttpPost("Save"), AllowAnonymous]
-        public async Task<IActionResult> Save(UserRequest userRequest)
+        public async Task<IActionResult> RegisterUser(UserRequest userRequest)
         {
             try
             {
-                userRequestValidator.Validate(userRequest);
-
-                return new ObjectResult(await userService.Save(userRequest))
-                {
-                    StatusCode = StatusCodes.Status201Created
-                };
+                ValidateRequest(userRequestValidator, userRequest);
+                var result = await userService.Save(userRequest);
+                return StatusCode(StatusCodes.Status201Created, result);
             }
             catch (Exception ex)
             {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorSaving"));
+                return HandleException(ex, "ErrorSaving");
             }
         }
 
@@ -50,13 +49,13 @@ namespace Presentation.Web.Controllers
         {
             try
             {
-                logInRequestValidator.Validate(logInRequest);
-
-                return Ok(await userService.LogIn(logInRequest));
+                ValidateRequest(logInRequestValidator, logInRequest);
+                var result = await userService.LogIn(logInRequest);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return BadRequest(!ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate("ErrorLoggingIn"));
+                return HandleException(ex, "ErrorLoggingIn");
             }
         }
 
@@ -69,7 +68,23 @@ namespace Presentation.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro: {ex.Message}");
+                return HandleException(ex, "ErrorTest");
+            }
+        }
+
+        private IActionResult HandleException(Exception ex, string defaultMessageKey)
+        {
+            var message = !ex.Message.IsNullOrEmpty() ? Translator.Translate(ex.Message) : Translator.Translate(defaultMessageKey);
+            return BadRequest(message);
+        }
+
+        private void ValidateRequest<T>(IValidator<T> validator, T request)
+        {
+            ValidationResult result = validator.Validate(request);
+            if (!result.IsValid)
+            {
+                var errorMessages = string.Join("; ", result.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errorMessages);
             }
         }
     }
